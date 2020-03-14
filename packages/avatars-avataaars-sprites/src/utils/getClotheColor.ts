@@ -1,39 +1,38 @@
 import Random from '@dicebear/avatars/lib/random';
 import Options from '../options';
-import getOption from './getOption';
 
 export default function(options: Options, random: Random) {
   let clotheColor = [];
 
-  if (getOption('clothesColor', 'black', options)) {
+  if (options.includes('clothesColor', 'black')) {
     clotheColor.push('black');
   }
 
-  if (getOption('clothesColor', 'blue', options)) {
+  if (options.includes('clothesColor', 'blue')) {
     clotheColor.push('Blue01', 'Blue02', 'Blue03');
   }
 
-  if (getOption('clothesColor', 'gray', options)) {
+  if (options.includes('clothesColor', 'gray')) {
     clotheColor.push('Gray01', 'Gray02');
   }
 
-  if (getOption('clothesColor', 'heather', options)) {
+  if (options.includes('clothesColor', 'heather')) {
     clotheColor.push('Heather');
   }
 
-  if (getOption('clothesColor', 'pastel', options)) {
+  if (options.includes('clothesColor', 'pastel')) {
     clotheColor.push('PastelBlue', 'PastelGreen', 'PastelOrange', 'PastelRed', 'PastelYellow');
   }
 
-  if (getOption('clothesColor', 'pink', options)) {
+  if (options.includes('clothesColor', 'pink')) {
     clotheColor.push('Pink');
   }
 
-  if (getOption('clothesColor', 'red', options)) {
+  if (options.includes('clothesColor', 'red')) {
     clotheColor.push('Red');
   }
 
-  if (getOption('clothesColor', 'white', options)) {
+  if (options.includes('clothesColor', 'white')) {
     clotheColor.push('White');
   }
 

@@ -1,8 +1,13 @@
-import Random from './random';
-import Color from './color';
-import Parser from './parser';
+/// <reference types="../typings/pure-color" />
+/// <reference types="../typings/seedrandom" />
+/// <reference types="../typings/svgson" />
 
-export type Options = {
+import Random from './Random';
+import Options from './Options';
+import Color from './Color';
+import Parser from './Parser';
+
+export type AvatarsOptions = {
   radius?: number;
   base64?: boolean;
   width?: number | string;
@@ -12,19 +17,19 @@ export type Options = {
   userAgent?: string;
 };
 
-export type SpriteCollection<O = {}> = (random: Random, options?: O) => string | svgson.schema;
+export type SpriteCollection<O = {}> = (random: Random, options?: Options<O>) => string | svgson.schema;
 
 export default class Avatars<O> {
   public static random = Random;
   public static color = Color;
 
   protected spriteCollection: SpriteCollection<O>;
-  protected defaultOptions?: O & Options;
+  protected defaultOptions?: O & AvatarsOptions;
 
   /**
    * @param spriteCollection
    */
-  constructor(spriteCollection: SpriteCollection<O>, defaultOptions?: O & Options) {
+  constructor(spriteCollection: SpriteCollection<O>, defaultOptions?: O & AvatarsOptions) {
     this.spriteCollection = spriteCollection;
     this.defaultOptions = {
       userAgent: typeof window !== 'undefined' && window.navigator && window.navigator.userAgent,
@@ -37,110 +42,45 @@ export default class Avatars<O> {
    *
    * @param seed
    */
-  public create(seed: string, options?: O & Options) {
-    options = { ...this.defaultOptions, ...options };
+  public create(seed: string, options?: O & AvatarsOptions) {
+    const optionsContainer = new Options({ ...this.defaultOptions, ...options });
 
-    let svg = this.spriteCollection(new Random(seed), options);
+    let svg = Parser.parse(this.spriteCollection(new Random(seed), optionsContainer));
 
-    if (options) {
-      svg = Parser.parse(svg);
+    let viewBox = svg.attributes['viewBox'].split(' ');
+    let viewBoxX = parseInt(viewBox[0]);
+    let viewBoxY = parseInt(viewBox[1]);
+    let viewBoxWidth = parseInt(viewBox[2]);
+    let viewBoxHeight = parseInt(viewBox[3]);
 
-      let viewBox = svg.attributes['viewBox'].split(' ');
-      let viewBoxX = parseInt(viewBox[0]);
-      let viewBoxY = parseInt(viewBox[1]);
-      let viewBoxWidth = parseInt(viewBox[2]);
-      let viewBoxHeight = parseInt(viewBox[3]);
+    if (optionsContainer.has('width')) {
+      svg.attributes['width'] = optionsContainer.get('width').toString();
+    }
 
-      if (options.width) {
-        svg.attributes['width'] = options.width.toString();
-      }
+    if (optionsContainer.has('height')) {
+      svg.attributes['height'] = optionsContainer.get('height').toString();
+    }
 
-      if (options.height) {
-        svg.attributes['height'] = options.height.toString();
-      }
+    if (optionsContainer.has('margin')) {
+      let groupable: svgson.schema[] = [];
 
-      if (options.margin) {
-        let groupable: svgson.schema[] = [];
+      svg.children = svg.children.filter(child => {
+        if (this.isGroupable(child)) {
+          groupable.push(child);
 
-        svg.children = svg.children.filter(child => {
-          if (this.isGroupable(child)) {
-            groupable.push(child);
+          return false;
+        }
 
-            return false;
-          }
+        return true;
+      });
 
-          return true;
-        });
-
-        svg.children.push({
-          name: 'g',
-          type: 'element',
-          value: '',
-          children: [
-            {
-              name: 'g',
-              type: 'element',
-              value: '',
-              children: [
-                {
-                  name: 'rect',
-                  type: 'element',
-                  value: '',
-                  children: [],
-                  attributes: {
-                    fill: 'none',
-                    width: viewBoxWidth.toString(),
-                    height: viewBoxHeight.toString(),
-                    x: viewBoxX.toString(),
-                    y: viewBoxY.toString()
-                  }
-                },
-                ...groupable
-              ],
-              attributes: {
-                transform: `scale(${1 - (options.margin * 2) / 100})`
-              }
-            }
-          ],
-          attributes: {
-            // prettier-ignore
-            transform: `translate(${viewBoxWidth * options.margin / 100}, ${viewBoxHeight * options.margin / 100})`
-          }
-        });
-      }
-
-      if (options.background) {
-        svg.children.unshift({
-          name: 'rect',
-          type: 'element',
-          value: '',
-          children: [],
-          attributes: {
-            fill: options.background,
-            width: viewBoxWidth.toString(),
-            height: viewBoxHeight.toString(),
-            x: viewBoxX.toString(),
-            y: viewBoxY.toString()
-          }
-        });
-      }
-
-      if (options.radius) {
-        let groupable: svgson.schema[] = [];
-
-        svg.children = svg.children.filter(child => {
-          if (this.isGroupable(child)) {
-            groupable.push(child);
-
-            return false;
-          }
-
-          return true;
-        });
-
-        svg.children.push(
+      svg.children.push({
+        name: 'g',
+        type: 'element',
+        value: '',
+        children: [
           {
-            name: 'mask',
+            name: 'g',
             type: 'element',
             value: '',
             children: [
@@ -150,36 +90,97 @@ export default class Avatars<O> {
                 value: '',
                 children: [],
                 attributes: {
+                  fill: 'none',
                   width: viewBoxWidth.toString(),
                   height: viewBoxHeight.toString(),
-                  rx: ((viewBoxWidth * options.radius) / 100).toString(),
-                  ry: ((viewBoxHeight * options.radius) / 100).toString(),
-                  fill: '#fff',
                   x: viewBoxX.toString(),
                   y: viewBoxY.toString()
                 }
-              }
+              },
+              ...groupable
             ],
             attributes: {
-              id: 'avatarsRadiusMask'
-            }
-          },
-          {
-            name: 'g',
-            type: 'element',
-            value: '',
-            children: groupable,
-            attributes: {
-              mask: `url(#avatarsRadiusMask)`
+              transform: `scale(${1 - (optionsContainer.get('margin') * 2) / 100})`
             }
           }
-        );
-      }
+        ],
+        attributes: {
+          // prettier-ignore
+          transform: `translate(${viewBoxWidth * optionsContainer.get('margin') / 100}, ${viewBoxHeight * optionsContainer.get('margin') / 100})`
+        }
+      });
     }
 
-    svg = Parser.stringify(svg);
+    if (optionsContainer.has('background')) {
+      svg.children.unshift({
+        name: 'rect',
+        type: 'element',
+        value: '',
+        children: [],
+        attributes: {
+          fill: optionsContainer.get('background'),
+          width: viewBoxWidth.toString(),
+          height: viewBoxHeight.toString(),
+          x: viewBoxX.toString(),
+          y: viewBoxY.toString()
+        }
+      });
+    }
 
-    return options && options.base64 ? `data:image/svg+xml;base64,${window.btoa(svg)}` : svg;
+    if (optionsContainer.has('radius')) {
+      let groupable: svgson.schema[] = [];
+
+      svg.children = svg.children.filter(child => {
+        if (this.isGroupable(child)) {
+          groupable.push(child);
+
+          return false;
+        }
+
+        return true;
+      });
+
+      svg.children.push(
+        {
+          name: 'mask',
+          type: 'element',
+          value: '',
+          children: [
+            {
+              name: 'rect',
+              type: 'element',
+              value: '',
+              children: [],
+              attributes: {
+                width: viewBoxWidth.toString(),
+                height: viewBoxHeight.toString(),
+                rx: ((viewBoxWidth * optionsContainer.get('radius')) / 100).toString(),
+                ry: ((viewBoxHeight * optionsContainer.get('radius')) / 100).toString(),
+                fill: '#fff',
+                x: viewBoxX.toString(),
+                y: viewBoxY.toString()
+              }
+            }
+          ],
+          attributes: {
+            id: 'avatarsRadiusMask'
+          }
+        },
+        {
+          name: 'g',
+          type: 'element',
+          value: '',
+          children: groupable,
+          attributes: {
+            mask: `url(#avatarsRadiusMask)`
+          }
+        }
+      );
+    }
+
+    return optionsContainer.get('base64', false)
+      ? `data:image/svg+xml;base64,${window.btoa(Parser.stringify(svg))}`
+      : Parser.stringify(svg);
   }
 
   private isGroupable(element: svgson.schema) {

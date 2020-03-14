@@ -17,7 +17,7 @@ import getEyebrowType from './utils/getEyebrowType';
 import getMouthType from './utils/getMouthType';
 import getSkinColor from './utils/getSkinColor';
 
-export default function(random: Random, options: Options = {}) {
+export default function(random: Random, options: Options) {
   let jsx = (
     <Avatar
       avatarStyle={getAvatarStyle(options)}
@@ -39,10 +39,10 @@ export default function(random: Random, options: Options = {}) {
 
   let rendered = renderToStaticMarkup(jsx);
 
-  if (options.background && options.style === 'circle') {
-    rendered.replace('mask="url(#mask-2)" fill="#65C9FF"', `mask="url(#mask-2)" fill="${options.background}"`);
+  if (options.get('background') && options.get('style') === 'circle') {
+    rendered.replace('mask="url(#mask-2)" fill="#65C9FF"', `mask="url(#mask-2)" fill="${options.get('background')}"`);
 
-    options.background = undefined;
+    options.delete('background');
   }
 
   return rendered

@@ -1,39 +1,38 @@
 import Random from '@dicebear/avatars/lib/random';
 import Options from '../options';
-import getOption from './getOption';
 
 export default function(options: Options, random: Random) {
   let hairColor = [];
 
-  if (getOption('hairColor', 'auburn', options)) {
+  if (options.includes('hairColor', 'auburn')) {
     hairColor.push('Auburn');
   }
 
-  if (getOption('hairColor', 'black', options)) {
+  if (options.includes('hairColor', 'black')) {
     hairColor.push('Black');
   }
 
-  if (getOption('hairColor', 'blonde', options)) {
+  if (options.includes('hairColor', 'blonde')) {
     hairColor.push('Blonde', 'BlondeGolden');
   }
 
-  if (getOption('hairColor', 'brown', options)) {
+  if (options.includes('hairColor', 'brown')) {
     hairColor.push('Brown', 'BrownDark');
   }
 
-  if (getOption('hairColor', 'pastel', options)) {
+  if (options.includes('hairColor', 'pastel')) {
     hairColor.push('PastelPink');
   }
 
-  if (getOption('hairColor', 'platinum', options)) {
+  if (options.includes('hairColor', 'platinum')) {
     hairColor.push('Platinum');
   }
 
-  if (getOption('hairColor', 'red', options)) {
+  if (options.includes('hairColor', 'red')) {
     hairColor.push('Red');
   }
 
-  if (getOption('hairColor', 'gray', options)) {
+  if (options.includes('hairColor', 'gray')) {
     hairColor.push('SilverGray');
   }
 

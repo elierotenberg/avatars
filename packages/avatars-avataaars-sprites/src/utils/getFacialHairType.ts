@@ -1,33 +1,32 @@
 import Random from '@dicebear/avatars/lib/random';
 import Options from '../options';
-import getOption from './getOption';
 
 export default function(options: Options, random: Random) {
   let facialHairType = [];
 
-  if (getOption('facialHair', 'medium', options)) {
+  if (options.includes('facialHair', 'medium')) {
     facialHairType.push('BeardMedium');
   }
 
-  if (getOption('facialHair', 'light', options)) {
+  if (options.includes('facialHair', 'light')) {
     facialHairType.push('BeardLight');
   }
 
-  if (getOption('facialHair', 'majestic', options)) {
+  if (options.includes('facialHair', 'majestic')) {
     facialHairType.push('BeardMajestic');
   }
 
-  if (getOption('facialHair', 'fancy', options)) {
+  if (options.includes('facialHair', 'fancy')) {
     facialHairType.push('MoustacheFancy');
   }
 
-  if (getOption('facialHair', 'magnum', options)) {
+  if (options.includes('facialHair', 'magnum')) {
     facialHairType.push('MoustacheMagnum');
   }
 
   let pickedFacialHairType = random.pickone(facialHairType);
 
-  if (false === random.bool(undefined !== options.facialHairChance ? options.facialHairChance : 10)) {
+  if (false === random.bool(options.get('facialHairChance', 10))) {
     return 'Blank';
   }
 

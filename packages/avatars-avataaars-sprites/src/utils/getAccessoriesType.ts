@@ -1,37 +1,36 @@
 import Random from '@dicebear/avatars/lib/random';
 import Options from '../options';
-import getOption from './getOption';
 
 export default function(options: Options, random: Random) {
   let accessoriesType = [];
 
-  if (getOption('accessories', 'kurt', options)) {
+  if (options.includes('accessories', 'kurt')) {
     accessoriesType.push('Kurt');
   }
 
-  if (getOption('accessories', 'prescription01', options)) {
+  if (options.includes('accessories', 'prescription01')) {
     accessoriesType.push('Prescription01');
   }
 
-  if (getOption('accessories', 'prescription02', options)) {
+  if (options.includes('accessories', 'prescription02')) {
     accessoriesType.push('Prescription02');
   }
 
-  if (getOption('accessories', 'round', options)) {
+  if (options.includes('accessories', 'round')) {
     accessoriesType.push('Round');
   }
 
-  if (getOption('accessories', 'sunglasses', options)) {
+  if (options.includes('accessories', 'sunglasses')) {
     accessoriesType.push('Sunglasses');
   }
 
-  if (getOption('accessories', 'wayfarers', options)) {
+  if (options.includes('accessories', 'wayfarers')) {
     accessoriesType.push('Wayfarers');
   }
 
   let pickedAccessoriesType = random.pickone(accessoriesType);
 
-  if (false === random.bool(undefined !== options.accessoriesChance ? options.accessoriesChance : 10)) {
+  if (false === random.bool(options.get('accessoriesChance', 10))) {
     return 'Blank';
   }
 

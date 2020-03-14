@@ -1,55 +1,54 @@
 import Random from '@dicebear/avatars/lib/random';
 import Options from '../options';
-import getOption from './getOption';
 
 export default function(options: Options, random: Random) {
   let mouthType = [];
 
-  if (getOption('mouth', 'concerned', options)) {
+  if (options.includes('mouth', 'concerned')) {
     mouthType.push('Concerned');
   }
 
-  if (getOption('mouth', 'default', options)) {
+  if (options.includes('mouth', 'default')) {
     mouthType.push('Default');
   }
 
-  if (getOption('mouth', 'disbelief', options)) {
+  if (options.includes('mouth', 'disbelief')) {
     mouthType.push('Disbelief');
   }
 
-  if (getOption('mouth', 'eating', options)) {
+  if (options.includes('mouth', 'eating')) {
     mouthType.push('Eating');
   }
 
-  if (getOption('mouth', 'grimace', options)) {
+  if (options.includes('mouth', 'grimace')) {
     mouthType.push('Grimace');
   }
 
-  if (getOption('mouth', 'sad', options)) {
+  if (options.includes('mouth', 'sad')) {
     mouthType.push('Sad');
   }
 
-  if (getOption('mouth', 'scream', options)) {
+  if (options.includes('mouth', 'scream')) {
     mouthType.push('ScreamOpen');
   }
 
-  if (getOption('mouth', 'serious', options)) {
+  if (options.includes('mouth', 'serious')) {
     mouthType.push('Serious');
   }
 
-  if (getOption('mouth', 'smile', options)) {
+  if (options.includes('mouth', 'smile')) {
     mouthType.push('Smile');
   }
 
-  if (getOption('mouth', 'tongue', options)) {
+  if (options.includes('mouth', 'tongue')) {
     mouthType.push('Tongue');
   }
 
-  if (getOption('mouth', 'twinkle', options)) {
+  if (options.includes('mouth', 'twinkle')) {
     mouthType.push('Twinkle');
   }
 
-  if (getOption('mouth', 'vomit', options)) {
+  if (options.includes('mouth', 'vomit')) {
     mouthType.push('Vomit');
   }
 

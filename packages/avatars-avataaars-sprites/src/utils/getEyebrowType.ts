@@ -1,35 +1,34 @@
 import Random from '@dicebear/avatars/lib/random';
 import Options from '../options';
-import getOption from './getOption';
 
 export default function(options: Options, random: Random) {
   let eyebrowType = [];
 
-  if (getOption('eyebrow', 'angry', options)) {
+  if (options.includes('eyebrow', 'angry')) {
     eyebrowType.push('Angry', 'AngryNatural');
   }
 
-  if (getOption('eyebrow', 'default', options)) {
+  if (options.includes('eyebrow', 'default')) {
     eyebrowType.push('Default', 'DefaultNatural');
   }
 
-  if (getOption('eyebrow', 'flat', options)) {
+  if (options.includes('eyebrow', 'flat')) {
     eyebrowType.push('FlatNatural');
   }
 
-  if (getOption('eyebrow', 'raised', options)) {
+  if (options.includes('eyebrow', 'raised')) {
     eyebrowType.push('RaisedExcited', 'RaisedExcitedNatural');
   }
 
-  if (getOption('eyebrow', 'sad', options)) {
+  if (options.includes('eyebrow', 'sad')) {
     eyebrowType.push('SadConcerned', 'SadConcernedNatural');
   }
 
-  if (getOption('eyebrow', 'unibrow', options)) {
+  if (options.includes('eyebrow', 'unibrow')) {
     eyebrowType.push('UnibrowNatural');
   }
 
-  if (getOption('eyebrow', 'up', options)) {
+  if (options.includes('eyebrow', 'up')) {
     eyebrowType.push('UpDown', 'UpDownNatural');
   }
 

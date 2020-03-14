@@ -1,55 +1,54 @@
 import Random from '@dicebear/avatars/lib/random';
 import Options from '../options';
-import getOption from './getOption';
 
 export default function(options: Options, random: Random) {
   let eyeType = [];
 
-  if (getOption('eyes', 'close', options)) {
+  if (options.includes('eyes', 'close')) {
     eyeType.push('Close');
   }
 
-  if (getOption('eyes', 'cry', options)) {
+  if (options.includes('eyes', 'cry')) {
     eyeType.push('Cry');
   }
 
-  if (getOption('eyes', 'default', options)) {
+  if (options.includes('eyes', 'default')) {
     eyeType.push('Default');
   }
 
-  if (getOption('eyes', 'dizzy', options)) {
+  if (options.includes('eyes', 'dizzy')) {
     eyeType.push('Dizzy');
   }
 
-  if (getOption('eyes', 'roll', options)) {
+  if (options.includes('eyes', 'roll')) {
     eyeType.push('EyeRoll');
   }
 
-  if (getOption('eyes', 'happy', options)) {
+  if (options.includes('eyes', 'happy')) {
     eyeType.push('Happy');
   }
 
-  if (getOption('eyes', 'hearts', options)) {
+  if (options.includes('eyes', 'hearts')) {
     eyeType.push('Hearts');
   }
 
-  if (getOption('eyes', 'side', options)) {
+  if (options.includes('eyes', 'side')) {
     eyeType.push('Side');
   }
 
-  if (getOption('eyes', 'squint', options)) {
+  if (options.includes('eyes', 'squint')) {
     eyeType.push('Squint');
   }
 
-  if (getOption('eyes', 'surprised', options)) {
+  if (options.includes('eyes', 'surprised')) {
     eyeType.push('Surprised');
   }
 
-  if (getOption('eyes', 'wink', options)) {
+  if (options.includes('eyes', 'wink')) {
     eyeType.push('Wink');
   }
 
-  if (getOption('eyes', 'winkWacky', options)) {
+  if (options.includes('eyes', 'winkWacky')) {
     eyeType.push('WinkWacky');
   }
 

@@ -1,15 +1,11 @@
 import Options from '../options';
 
 export default function(options: Options) {
-  let avatarStyle = 'Transparent';
-
-  switch (options.style) {
+  switch (options.get('style')) {
     case 'circle':
       return 'Circle';
 
-    case 'transparent':
+    default:
       return 'Transparent';
   }
-
-  return avatarStyle;
 }

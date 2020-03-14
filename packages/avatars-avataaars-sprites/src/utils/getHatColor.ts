@@ -1,39 +1,38 @@
 import Random from '@dicebear/avatars/lib/random';
 import Options from '../options';
-import getOption from './getOption';
 
 export default function(options: Options, random: Random) {
   let hatColor = [];
 
-  if (getOption('hatColor', 'black', options)) {
+  if (options.includes('hatColor', 'black')) {
     hatColor.push('black');
   }
 
-  if (getOption('hatColor', 'blue', options)) {
+  if (options.includes('hatColor', 'blue')) {
     hatColor.push('Blue01', 'Blue02', 'Blue03');
   }
 
-  if (getOption('hatColor', 'gray', options)) {
+  if (options.includes('hatColor', 'gray')) {
     hatColor.push('Gray01', 'Gray02');
   }
 
-  if (getOption('hatColor', 'heather', options)) {
+  if (options.includes('hatColor', 'heather')) {
     hatColor.push('Heather');
   }
 
-  if (getOption('hatColor', 'pastel', options)) {
+  if (options.includes('hatColor', 'pastel')) {
     hatColor.push('PastelBlue', 'PastelGreen', 'PastelOrange', 'PastelRed', 'PastelYellow');
   }
 
-  if (getOption('hatColor', 'pink', options)) {
+  if (options.includes('hatColor', 'pink')) {
     hatColor.push('Pink');
   }
 
-  if (getOption('hatColor', 'red', options)) {
+  if (options.includes('hatColor', 'red')) {
     hatColor.push('Red');
   }
 
-  if (getOption('hatColor', 'white', options)) {
+  if (options.includes('hatColor', 'white')) {
     hatColor.push('White');
   }
 

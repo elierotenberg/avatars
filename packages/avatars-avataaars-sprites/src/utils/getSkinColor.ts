@@ -1,35 +1,34 @@
 import Random from '@dicebear/avatars/lib/random';
 import Options from '../options';
-import getOption from './getOption';
 
 export default function(options: Options, random: Random) {
   let skinColor = [];
 
-  if (getOption('skin', 'tanned', options)) {
+  if (options.includes('skin', 'tanned')) {
     skinColor.push('Tanned');
   }
 
-  if (getOption('skin', 'yellow', options)) {
+  if (options.includes('skin', 'yellow')) {
     skinColor.push('Yellow');
   }
 
-  if (getOption('skin', 'pale', options)) {
+  if (options.includes('skin', 'pale')) {
     skinColor.push('Pale');
   }
 
-  if (getOption('skin', 'light', options)) {
+  if (options.includes('skin', 'light')) {
     skinColor.push('Light');
   }
 
-  if (getOption('skin', 'brown', options)) {
+  if (options.includes('skin', 'brown')) {
     skinColor.push('Brown');
   }
 
-  if (getOption('skin', 'darkBrown', options)) {
+  if (options.includes('skin', 'darkBrown')) {
     skinColor.push('DarkBrown');
   }
 
-  if (getOption('skin', 'black', options)) {
+  if (options.includes('skin', 'black')) {
     skinColor.push('Black');
   }
 

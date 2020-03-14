@@ -1,11 +1,10 @@
 import Random from '@dicebear/avatars/lib/random';
 import Options from '../options';
-import getOption from './getOption';
 
 export default function(options: Options, random: Random) {
   let topType = [];
 
-  if (getOption('top', 'longHair', options)) {
+  if (options.includes('top', 'longHair')) {
     topType.push(
       'LongHairBigHair',
       'LongHairBob',
@@ -25,7 +24,7 @@ export default function(options: Options, random: Random) {
     );
   }
 
-  if (getOption('top', 'shortHair', options)) {
+  if (options.includes('top', 'shortHair')) {
     topType.push(
       'ShortHairDreads01',
       'ShortHairDreads02',
@@ -42,25 +41,25 @@ export default function(options: Options, random: Random) {
     );
   }
 
-  if (getOption('top', 'eyepatch', options)) {
+  if (options.includes('top', 'eyepatch')) {
     topType.push('Eyepatch');
   }
 
-  if (getOption('top', 'hat', options)) {
+  if (options.includes('top', 'hat')) {
     topType.push('Hat', 'WinterHat1', 'WinterHat2', 'WinterHat3', 'WinterHat4');
   }
 
-  if (getOption('top', 'hijab', options)) {
+  if (options.includes('top', 'hijab')) {
     topType.push('Hijab');
   }
 
-  if (getOption('top', 'turban', options)) {
+  if (options.includes('top', 'turban')) {
     topType.push('Turban');
   }
 
   let pickedTopType = random.pickone(topType);
 
-  if (false === random.bool(undefined !== options.topChance ? options.topChance : 100)) {
+  if (false === random.bool(options.get('topChance', 100))) {
     return 'NoHair';
   }
 

@@ -2,19 +2,8 @@ import * as hexToRgb from 'pure-color/parse/hex';
 import * as rgbToHsv from 'pure-color/convert/rgb2hsv';
 import * as rgbToHex from 'pure-color/convert/rgb2hex';
 import * as hsvToRgb from 'pure-color/convert/hsv2rgb';
-import collection from './collection';
 
-export interface ColorInterface {
-  alpha: number;
-  hex: string;
-  rgb: number[];
-  rgba: number[];
-  hsv: number[];
-}
-
-export default class Color implements ColorInterface {
-  public static collection = collection;
-
+export default class Color {
   public alpha: number = 1;
 
   private color: {
@@ -57,7 +46,7 @@ export default class Color implements ColorInterface {
     }
   }
 
-  clone() {
+  clone(): Color {
     return new Color('rgb(' + this.rgb.join(',') + ')');
   }
 
@@ -72,7 +61,7 @@ export default class Color implements ColorInterface {
     };
   }
 
-  get rgb() {
+  get rgb(): number[] {
     return (this.color.rgb = this.color.rgb || (this.color.hex ? this.hexToRgb(this.hex) : this.hsvToRgb(this.hsv)));
   }
 
@@ -85,7 +74,7 @@ export default class Color implements ColorInterface {
     this.alpha = rgba[3];
   }
 
-  get rgba() {
+  get rgba(): number[] {
     return [this.rgb[0], this.rgb[1], this.rgb[2], this.alpha];
   }
 
@@ -100,7 +89,7 @@ export default class Color implements ColorInterface {
     };
   }
 
-  get hsv() {
+  get hsv(): number[] {
     // Slice array to return copy
     return (this.color.hsv = this.color.hsv || this.rgbToHsv(this.rgb)).slice(0);
   }
@@ -112,12 +101,12 @@ export default class Color implements ColorInterface {
     };
   }
 
-  get hex() {
+  get hex(): string {
     // Slice array to return copy
     return (this.color.hex = this.color.hex || this.rgbToHex(this.rgb)).slice(0);
   }
 
-  public brighterThan(color: ColorInterface, difference: number) {
+  public brighterThan(color: Color, difference: number): this {
     let primaryColorHsv = this.hsv;
     let secondaryColorHsv = color.hsv;
 
@@ -136,7 +125,7 @@ export default class Color implements ColorInterface {
     return this;
   }
 
-  public darkerThan(color: ColorInterface, difference: number) {
+  public darkerThan(color: Color, difference: number): this {
     let primaryColorHsv = this.hsv;
     let secondaryColorHsv = color.hsv;
 
@@ -155,7 +144,7 @@ export default class Color implements ColorInterface {
     return this;
   }
 
-  public brighterOrDarkerThan(color: ColorInterface, difference: number) {
+  public brighterOrDarkerThan(color: Color, difference: number): this {
     let primaryColorHsv = this.hsv;
     let secondaryColorHsv = color.hsv;
 
@@ -166,19 +155,19 @@ export default class Color implements ColorInterface {
     }
   }
 
-  private rgbToHex(rgb: number[]) {
+  private rgbToHex(rgb: number[]): string {
     return rgbToHex(rgb);
   }
 
-  private hexToRgb(hex: string) {
+  private hexToRgb(hex: string): number[] {
     return hexToRgb(hex).map(val => Math.round(val));
   }
 
-  private rgbToHsv(rgb: number[]) {
+  private rgbToHsv(rgb: number[]): number[] {
     return rgbToHsv(rgb).map(val => Math.round(val));
   }
 
-  private hsvToRgb(hsv: number[]) {
+  private hsvToRgb(hsv: number[]): number[] {
     return hsvToRgb(hsv).map(val => Math.round(val));
   }
 }

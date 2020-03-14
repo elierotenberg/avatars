@@ -2,6 +2,7 @@ import Color from '@dicebear/avatars/lib/color';
 import Random from '@dicebear/avatars/lib/random';
 
 type Options = {
+  skinColors?: Array<100 | 200 | 300 | 400 | 500 | 600 | 700 | 800>;
   mood?: Array<'happy' | 'sad' | 'surprised'>;
 };
 
