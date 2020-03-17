@@ -1,8 +1,7 @@
-import { AvatarsOptions } from '@dicebear/avatars';
-import OptionsContainer from '@dicebear/avatars/lib/options';
+import type { DefaultOptions } from '@dicebear/avatars';
+import OptionsContainer from '@dicebear/avatars/lib/Options';
 
-type Options = OptionsContainer<
-  AvatarsOptions & {
+type Options = OptionsContainer<DefaultOptions & {
     background?: string;
     style?: 'transparent' | 'circle';
     top?: 'longHair' | 'shortHair' | 'eyepatch' | 'hat' | 'hijab' | 'turban';

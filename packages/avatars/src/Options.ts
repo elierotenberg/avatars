@@ -1,4 +1,14 @@
-export default class Options<O extends {}> {
+export type DefaultOptions = {
+  radius?: number;
+  base64?: boolean;
+  width?: number | string;
+  height?: number | string;
+  margin?: number;
+  background?: string;
+  userAgent?: string;
+};
+
+export default class Options<O extends DefaultOptions> {
   private options: O;
 
   constructor(options: O) {

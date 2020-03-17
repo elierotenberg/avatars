@@ -1,12 +1,11 @@
-import { ColorCollection, Color } from '@dicebear/avatars/lib/types';
-import { AvatarsOptions } from '@dicebear/avatars';
-import OptionsContainer from '@dicebear/avatars/lib/options';
+import type { DefaultOptions } from '@dicebear/avatars';
+import { Options as OptionsContainer } from '@dicebear/avatars';
 
 type Options = OptionsContainer<
-  AvatarsOptions & {
-    colors?: Array<keyof ColorCollection>;
-    primaryColorLevel?: keyof Color;
-    secondaryColorLevel?: keyof Color;
+DefaultOptions & {
+    colors?: string[];
+    primaryColorLevel?: number;
+    secondaryColorLevel?: number;
     colorful?: boolean;
     mouthChance?: number;
     sidesChance?: number;

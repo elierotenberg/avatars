@@ -1,6 +1,5 @@
-import Color from '@dicebear/avatars/lib/color';
-import Random from '@dicebear/avatars/lib/random';
-import { ColorCollection, Color as ColorType } from '@dicebear/avatars/lib/types';
+import type { Random } from '@dicebear/avatars';
+import { Color, ColorCollection } from '@dicebear/avatars';
 import Options from './options';
 
 import eyesCollection from './eyes';
@@ -18,31 +17,19 @@ const group = (random: Random, content: string, chance: number, x: number, y: nu
   return '';
 };
 
-export default function(random: Random, options: Options = {}) {
-  options.primaryColorLevel = options.primaryColorLevel || 600;
-  options.secondaryColorLevel = options.secondaryColorLevel || 400;
-  options.mouthChance = options.mouthChance || 100;
-  options.sidesChance = options.sidesChance || 100;
-  options.textureChance = options.textureChance || 50;
-  options.topChange = options.topChange || 100;
+export default function(random: Random, options: Options) {
+  let colorCollection = new ColorCollection();
+  let primaryColors = colorCollection.get(options.get('primaryColorLevel', 600));
+  let secondaryColors = colorCollection.get(options.get('secondaryColorLevel', 400));
 
-  let colorsCollection: Array<ColorType> = [];
+  // Select colors that occur in both color levels.
+  let possibleColors = Object.keys(primaryColors).filter(key => secondaryColors[key]);
 
-  Object.keys(Color.collection).forEach((color: keyof ColorCollection) => {
-    if (options.colors === undefined || options.colors.length === 0 || options.colors.indexOf(color) !== -1) {
-      colorsCollection.push(Color.collection[color]);
-    }
-  });
+  let primaryColorName = random.pickone(possibleColors);
+  let secondaryColorName = options.get('colorful', false) ? random.pickone(possibleColors) : primaryColorName;
 
-  let primaryColorCollection = random.pickone(colorsCollection);
-  let secondaryColorCollection = random.pickone(colorsCollection);
-
-  let primaryColor = new Color(primaryColorCollection[options.primaryColorLevel]);
-  let secondaryColor = new Color(primaryColorCollection[options.secondaryColorLevel]);
-
-  if (options.colorful) {
-    secondaryColor = new Color(secondaryColorCollection[options.secondaryColorLevel]);
-  }
+  let primaryColor = new Color(primaryColors[primaryColorName]);
+  let secondaryColor = new Color(secondaryColors[secondaryColorName]);
 
   let eyes = random.pickone(eyesCollection);
   let face = random.pickone(faceCollection);
@@ -54,10 +41,10 @@ export default function(random: Random, options: Options = {}) {
   // prettier-ignore
   return [
     '<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" fill="none">',
-    group(random, sides(secondaryColor), options.sidesChance, 0, 66),
-    group(random, top(secondaryColor), options.topChange, 41, 0),
-    group(random, face(primaryColor, random.bool(options.textureChance) ? texture() : undefined), 100, 25, 44),
-    group(random, mouth(), options.mouthChance, 52, 124),
+    group(random, sides(primaryColor), options.get('sidesChance', 100), 0, 66),
+    group(random, top(primaryColor), options.get('topChange', 100), 41, 0),
+    group(random, face(secondaryColor, random.bool(options.get('textureChance', 50)) ? texture() : undefined), 100, 25, 44),
+    group(random, mouth(), options.get('mouthChance', 100), 52, 124),
     group(random, eyes(), 100, 38, 76),
     '</svg>'
   ].join('');

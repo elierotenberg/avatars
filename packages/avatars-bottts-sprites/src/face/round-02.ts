@@ -1,4 +1,4 @@
-import Color from '@dicebear/avatars/lib/color';
+import type { Color } from '@dicebear/avatars';
 
 export default (color: Color, texture?: string) => {
   return `

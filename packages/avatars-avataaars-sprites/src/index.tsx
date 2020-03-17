@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import Random from '@dicebear/avatars/lib/random';
+import type { Random } from '@dicebear/avatars';
 import Avatar from 'avataaars';
 import Options from './options';
 import getAvatarStyle from './utils/getAvatarStyle';

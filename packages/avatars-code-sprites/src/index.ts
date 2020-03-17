@@ -1,23 +1,25 @@
-import Random from '@dicebear/avatars/lib/random';
+import type { Random, Options as OptionsContainer, DefaultOptions } from '@dicebear/avatars';
 import qrImage from 'qr-image';
 
-type Options = {
-  type?: string;
-  color?: string;
-  correctionLevel?: 'L' | 'M' | 'Q' | 'H';
-};
+type Options = OptionsContainer<
+  DefaultOptions & {
+    type?: string;
+    color?: string;
+    correctionLevel?: 'L' | 'M' | 'Q' | 'H';
+  }
+>;
 
-export default function(random: Random, options: Options = {}) {
+export default function(random: Random, options: Options) {
   let svg = qrImage
     .imageSync(random.seed, {
       type: 'svg',
-      ec_level: options.correctionLevel,
+      ec_level: options.get('correctionLevel'),
       margin: 0
     })
     .toString();
 
-  if (options.color) {
-    svg = svg.replace('<path ', `<path fill="${options.color}" `);
+  if (options.has('color')) {
+    svg = svg.replace('<path ', `<path fill="${options.get('color')}" `);
   }
 
   return svg;

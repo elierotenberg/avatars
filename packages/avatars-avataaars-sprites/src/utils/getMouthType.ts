@@ -1,5 +1,5 @@
-import Random from '@dicebear/avatars/lib/random';
-import Options from '../options';
+import type { Random } from '@dicebear/avatars';
+import type Options from '../options';
 
 export default function(options: Options, random: Random) {
   let mouthType = [];
