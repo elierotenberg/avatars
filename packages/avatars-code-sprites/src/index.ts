@@ -1,8 +1,7 @@
-import type { Random, Options as OptionsContainer, DefaultOptions } from '@dicebear/avatars';
+import type { Random, Options as OptionsContainer } from '@dicebear/avatars';
 import qrImage from 'qr-image';
 
-type Options = OptionsContainer<
-  DefaultOptions & {
+type Options = OptionsContainer<{
     type?: string;
     color?: string;
     correctionLevel?: 'L' | 'M' | 'Q' | 'H';

@@ -1,22 +1,19 @@
-import Color from '@dicebear/avatars/lib/color';
-import Random from '@dicebear/avatars/lib/random';
-import { ColorCollection, Color as ColorType } from '@dicebear/avatars/lib/types';
+import { ColorCollection } from '@dicebear/avatars';
+import type { Random, Options as OptionsContainer } from '@dicebear/avatars';
 
-type Options = {
-  colors?: Array<keyof ColorCollection>;
-  colorLevel?: keyof ColorType;
-};
+type Options = OptionsContainer<{
+  colors?: string[];
+  colorLevel?: number;
+}>;
 
-export default function(random: Random, options: Options = {}) {
-  options.colorLevel = options.colorLevel || 600;
+export default function(random: Random, options: Options) {
+  let colorCollection = new ColorCollection();
+  let colorLevel = options.get('colorLevel', 600);
 
-  let colors: string[] = [];
-
-  Object.keys(Color.collection).forEach((color: keyof ColorCollection) => {
-    if (options.colors === undefined || options.colors.length === 0 || options.colors.indexOf(color) !== -1) {
-      colors.push(Color.collection[color][options.colorLevel]);
-    }
-  });
+  let colors = Object
+    .values(colorCollection.get(colorLevel))
+    .filter(([name]) => options.includes('colors', name))
+    .map(([, value]) => value);
 
   let color = random.pickone(colors);
 

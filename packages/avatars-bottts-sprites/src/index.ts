@@ -1,5 +1,5 @@
 import type { Random } from '@dicebear/avatars';
-import { Color, ColorCollection } from '@dicebear/avatars';
+import { ColorCollection } from '@dicebear/avatars';
 import Options from './options';
 
 import eyesCollection from './eyes';
@@ -23,13 +23,16 @@ export default function(random: Random, options: Options) {
   let secondaryColors = colorCollection.get(options.get('secondaryColorLevel', 400));
 
   // Select colors that occur in both color levels.
-  let possibleColors = Object.keys(primaryColors).filter(key => secondaryColors[key]);
+  let possibleColors = Object
+    .keys(primaryColors)
+    .filter((name) => secondaryColors[name])
+    .filter((name) => options.includes('colors', name));
 
   let primaryColorName = random.pickone(possibleColors);
   let secondaryColorName = options.get('colorful', false) ? random.pickone(possibleColors) : primaryColorName;
 
-  let primaryColor = new Color(primaryColors[primaryColorName]);
-  let secondaryColor = new Color(secondaryColors[secondaryColorName]);
+  let primaryColor = primaryColors[primaryColorName];
+  let secondaryColor = secondaryColors[secondaryColorName];
 
   let eyes = random.pickone(eyesCollection);
   let face = random.pickone(faceCollection);

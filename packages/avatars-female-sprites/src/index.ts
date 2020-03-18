@@ -1,11 +1,11 @@
-import Color from '@dicebear/avatars/lib/color';
-import Random from '@dicebear/avatars/lib/random';
+import { Color } from '@dicebear/avatars';
+import type { Random, Options as OptionsContainer } from '@dicebear/avatars';
 
-type Options = {
+type Options = OptionsContainer<{
   mood?: Array<'happy' | 'sad' | 'surprised'>;
-};
+}>;
 
-export default function(random: Random, options: Options = {}) {
+export default function(random: Random, options: Options) {
   let skinColor = random.pickone([
     new Color('#FFDBAC'),
     new Color('#F5CFA0'),
@@ -117,7 +117,7 @@ export default function(random: Random, options: Options = {}) {
   let mouth = [];
 
   while (mouth.length === 0) {
-    if (false === Array.isArray(options.mood) || options.mood.indexOf('sad') > -1) {
+    if (options.includes('mood', 'sad')) {
       // prettier-ignore
       mouth.push(
           `<path d="M9 11v1H8v1h4v-1h-1v-1H9z" fill="${mouthColor.hex}"/>`,
@@ -127,7 +127,7 @@ export default function(random: Random, options: Options = {}) {
         );
     }
 
-    if (false === Array.isArray(options.mood) || options.mood.indexOf('happy') > -1) {
+    if (options.includes('mood', 'happy')) {
       // prettier-ignore
       mouth.push(
           `<path d="M9 11v2h2v-1h-1v-1H9z" fill="${mouthColor.hex}"/><path d="M11 13v-1h-1v-1H9v1h1v1h1z" fill="#FFF" fill-opacity=".2"/>`,
@@ -140,7 +140,7 @@ export default function(random: Random, options: Options = {}) {
         );
     }
 
-    if (false === Array.isArray(options.mood) || options.mood.indexOf('surprised') > -1) {
+    if (options.includes('mood', 'surprised')) {
       // prettier-ignore
       mouth.push(
           `<path d="M9 12v1h1v-1H9z" fill="${mouthColor.hex}"/>`,
@@ -150,7 +150,7 @@ export default function(random: Random, options: Options = {}) {
 
     if (mouth.length === 0) {
       // Reset mood option because it appears to be invalid.
-      options.mood = undefined;
+      options.delete('mood');
     }
   }
 

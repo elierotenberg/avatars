@@ -2,10 +2,7 @@ import Random from './Random';
 import Options, { DefaultOptions } from './Options';
 import Parser from './Parser';
 
-export type SpriteCollection<O = {}> = (
-  random: Random,
-  options?: Options<O & DefaultOptions>
-) => string | svgson.schema;
+export type SpriteCollection<O> = (random: Random, options?: Options<O>) => string | svgson.schema;
 
 export default class Avatars<O> {
   protected spriteCollection: SpriteCollection<O>;

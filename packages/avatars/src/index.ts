@@ -8,5 +8,3 @@ export { default as ColorCollection } from './ColorCollection';
 export { default as Options } from './Options';
 export { default as Parser } from './Parser';
 export { default as Random } from './Random';
-
-export type { DefaultOptions } from './Options';

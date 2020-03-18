@@ -8,18 +8,26 @@ export type DefaultOptions = {
   userAgent?: string;
 };
 
-export default class Options<O extends DefaultOptions> {
+export default class Options<T, O = T & DefaultOptions> {
   private options: O;
+  private defaults: O;
 
-  constructor(options: O) {
+  constructor(options: O, defaults?: O) {
     this.options = options;
+    this.defaults = defaults;
+  }
+
+  setDefaults(defaults: O) {
+    this.defaults = defaults;
+
+    return this;
   }
 
   has<K extends keyof O>(key: K): boolean {
     return this.options[key] !== undefined;
   }
 
-  get<K extends keyof O, D = null>(key: K, defaultValue: D = null): O[K] | D {
+  get<K extends keyof O>(key: K, defaultValue: any = this.defaults && this.defaults[key]): O[K] | any {
     if (false === this.has(key)) {
       return defaultValue;
     }
