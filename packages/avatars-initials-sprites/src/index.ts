@@ -1,4 +1,4 @@
-import { ColorCollection, Color } from '@dicebear/avatars';
+import { ColorCollection } from '@dicebear/avatars';
 import type { Random, Options as OptionsContainer } from '@dicebear/avatars';
 
 // @ts-ignore
@@ -35,7 +35,7 @@ export default function(random: Random, options: Options) {
 
     let backgroundColors = Object
       .values(colorCollection.get(backgroundColorLevel))
-      .filter(([name]) => options.includes('backgroundColors', name))
+      .filter(([name]) => options.get('backgroundColors', [name]).includes(name))
       .map(([,value]) => value);
 
     options.set('background', random.pickone(backgroundColors));

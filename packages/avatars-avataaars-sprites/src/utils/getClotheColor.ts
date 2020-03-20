@@ -4,35 +4,35 @@ import type Options from '../options';
 export default function(options: Options, random: Random) {
   let clotheColor = [];
 
-  if (options.includes('clothesColor', 'black')) {
+  if (options.get('clothesColor', ['black']).includes('black')) {
     clotheColor.push('black');
   }
 
-  if (options.includes('clothesColor', 'blue')) {
+  if (options.get('clothesColor', ['blue']).includes('blue')) {
     clotheColor.push('Blue01', 'Blue02', 'Blue03');
   }
 
-  if (options.includes('clothesColor', 'gray')) {
+  if (options.get('clothesColor', ['gray']).includes('gray')) {
     clotheColor.push('Gray01', 'Gray02');
   }
 
-  if (options.includes('clothesColor', 'heather')) {
+  if (options.get('clothesColor', ['heather']).includes('heather')) {
     clotheColor.push('Heather');
   }
 
-  if (options.includes('clothesColor', 'pastel')) {
+  if (options.get('clothesColor', ['pastel']).includes('pastel')) {
     clotheColor.push('PastelBlue', 'PastelGreen', 'PastelOrange', 'PastelRed', 'PastelYellow');
   }
 
-  if (options.includes('clothesColor', 'pink')) {
+  if (options.get('clothesColor', ['pink']).includes('pink')) {
     clotheColor.push('Pink');
   }
 
-  if (options.includes('clothesColor', 'red')) {
+  if (options.get('clothesColor', ['red']).includes('red')) {
     clotheColor.push('Red');
   }
 
-  if (options.includes('clothesColor', 'white')) {
+  if (options.get('clothesColor', ['white']).includes('white')) {
     clotheColor.push('White');
   }
 

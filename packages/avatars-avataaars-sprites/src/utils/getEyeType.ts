@@ -4,51 +4,51 @@ import type Options from '../options';
 export default function(options: Options, random: Random) {
   let eyeType = [];
 
-  if (options.includes('eyes', 'close')) {
+  if (options.get('eyes', ['close']).includes('close')) {
     eyeType.push('Close');
   }
 
-  if (options.includes('eyes', 'cry')) {
+  if (options.get('eyes', ['cry']).includes('cry')) {
     eyeType.push('Cry');
   }
 
-  if (options.includes('eyes', 'default')) {
+  if (options.get('eyes', ['default']).includes('default')) {
     eyeType.push('Default');
   }
 
-  if (options.includes('eyes', 'dizzy')) {
+  if (options.get('eyes', ['dizzy']).includes('dizzy')) {
     eyeType.push('Dizzy');
   }
 
-  if (options.includes('eyes', 'roll')) {
+  if (options.get('eyes', ['roll']).includes('roll')) {
     eyeType.push('EyeRoll');
   }
 
-  if (options.includes('eyes', 'happy')) {
+  if (options.get('eyes', ['happy']).includes('happy')) {
     eyeType.push('Happy');
   }
 
-  if (options.includes('eyes', 'hearts')) {
+  if (options.get('eyes', ['hearts']).includes('hearts')) {
     eyeType.push('Hearts');
   }
 
-  if (options.includes('eyes', 'side')) {
+  if (options.get('eyes', ['side']).includes('side')) {
     eyeType.push('Side');
   }
 
-  if (options.includes('eyes', 'squint')) {
+  if (options.get('eyes', ['squint']).includes('squint')) {
     eyeType.push('Squint');
   }
 
-  if (options.includes('eyes', 'surprised')) {
+  if (options.get('eyes', ['surprised']).includes('surprised')) {
     eyeType.push('Surprised');
   }
 
-  if (options.includes('eyes', 'wink')) {
+  if (options.get('eyes', ['wink']).includes('wink')) {
     eyeType.push('Wink');
   }
 
-  if (options.includes('eyes', 'winkWacky')) {
+  if (options.get('eyes', ['winkWacky']).includes('winkWacky')) {
     eyeType.push('WinkWacky');
   }
 

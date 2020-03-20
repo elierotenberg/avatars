@@ -4,31 +4,31 @@ import type Options from '../options';
 export default function(options: Options, random: Random) {
   let skinColor = [];
 
-  if (options.includes('skin', 'tanned')) {
+  if (options.get('skin', ['tanned']).includes('tanned')) {
     skinColor.push('Tanned');
   }
 
-  if (options.includes('skin', 'yellow')) {
+  if (options.get('skin', ['yellow']).includes('yellow')) {
     skinColor.push('Yellow');
   }
 
-  if (options.includes('skin', 'pale')) {
+  if (options.get('skin', ['pale']).includes('pale')) {
     skinColor.push('Pale');
   }
 
-  if (options.includes('skin', 'light')) {
+  if (options.get('skin', ['light']).includes('light')) {
     skinColor.push('Light');
   }
 
-  if (options.includes('skin', 'brown')) {
+  if (options.get('skin', ['brown']).includes('brown')) {
     skinColor.push('Brown');
   }
 
-  if (options.includes('skin', 'darkBrown')) {
+  if (options.get('skin', ['darkBrown']).includes('darkBrown')) {
     skinColor.push('DarkBrown');
   }
 
-  if (options.includes('skin', 'black')) {
+  if (options.get('skin', ['black']).includes('black')) {
     skinColor.push('Black');
   }
 

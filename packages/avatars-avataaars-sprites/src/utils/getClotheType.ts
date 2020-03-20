@@ -4,23 +4,23 @@ import type Options from '../options';
 export default function(options: Options, random: Random) {
   let clotheType = [];
 
-  if (options.includes('clothes', 'blazer')) {
+  if (options.get('clothes', ['blazer']).includes('blazer')) {
     clotheType.push('BlazerShirt', 'BlazerSweater');
   }
 
-  if (options.includes('clothes', 'sweater')) {
+  if (options.get('clothes', ['sweater']).includes('sweater')) {
     clotheType.push('CollarSweater');
   }
 
-  if (options.includes('clothes', 'shirt')) {
+  if (options.get('clothes', ['shirt']).includes('shirt')) {
     clotheType.push('GraphicShirt', 'ShirtCrewNeck', 'ShirtScoopNeck', 'ShirtVNeck');
   }
 
-  if (options.includes('clothes', 'hoodie')) {
+  if (options.get('clothes', ['hoodie']).includes('hoodie')) {
     clotheType.push('Hoodie');
   }
 
-  if (options.includes('clothes', 'overall')) {
+  if (options.get('clothes', ['overall']).includes('overall')) {
     clotheType.push('Overall');
   }
 

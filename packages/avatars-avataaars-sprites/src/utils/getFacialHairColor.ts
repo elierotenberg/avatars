@@ -4,27 +4,27 @@ import type Options from '../options';
 export default function(options: Options, random: Random) {
   let facialHairColor = [];
 
-  if (options.includes('facialHairColor', 'auburn')) {
+  if (options.get('facialHairColor', ['auburn']).includes('auburn')) {
     facialHairColor.push('Auburn');
   }
 
-  if (options.includes('facialHairColor', 'black')) {
+  if (options.get('facialHairColor', ['black']).includes('black')) {
     facialHairColor.push('Black');
   }
 
-  if (options.includes('facialHairColor', 'blonde')) {
+  if (options.get('facialHairColor', ['blonde']).includes('blonde')) {
     facialHairColor.push('Blonde', 'BlondeGolden');
   }
 
-  if (options.includes('facialHairColor', 'brown')) {
+  if (options.get('facialHairColor', ['brown']).includes('brown')) {
     facialHairColor.push('Brown', 'BrownDark');
   }
 
-  if (options.includes('facialHairColor', 'platinum')) {
+  if (options.get('facialHairColor', ['platinum']).includes('platinum')) {
     facialHairColor.push('Platinum');
   }
 
-  if (options.includes('facialHairColor', 'red')) {
+  if (options.get('facialHairColor', ['red']).includes('red')) {
     facialHairColor.push('Red');
   }
 

@@ -117,7 +117,7 @@ export default function(random: Random, options: Options) {
   let mouth = [];
 
   while (mouth.length === 0) {
-    if (options.includes('mood', 'sad')) {
+    if (options.get('mood', ['sad']).includes('sad')) {
       // prettier-ignore
       mouth.push(
           `<path d="M9 11v1H8v1h4v-1h-1v-1H9z" fill="${mouthColor.hex}"/>`,
@@ -127,7 +127,7 @@ export default function(random: Random, options: Options) {
         );
     }
 
-    if (options.includes('mood', 'happy')) {
+    if (options.get('mood', ['happy']).includes('happy')) {
       // prettier-ignore
       mouth.push(
           `<path d="M9 11v2h2v-1h-1v-1H9z" fill="${mouthColor.hex}"/><path d="M11 13v-1h-1v-1H9v1h1v1h1z" fill="#FFF" fill-opacity=".2"/>`,
@@ -140,7 +140,7 @@ export default function(random: Random, options: Options) {
         );
     }
 
-    if (options.includes('mood', 'surprised')) {
+    if (options.get('mood', ['surprised']).includes('surprised')) {
       // prettier-ignore
       mouth.push(
           `<path d="M9 12v1h1v-1H9z" fill="${mouthColor.hex}"/>`,

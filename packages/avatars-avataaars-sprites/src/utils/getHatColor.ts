@@ -4,35 +4,35 @@ import type Options from '../options';
 export default function(options: Options, random: Random) {
   let hatColor = [];
 
-  if (options.includes('hatColor', 'black')) {
+  if (options.get('hatColor', ['black']).includes('black')) {
     hatColor.push('black');
   }
 
-  if (options.includes('hatColor', 'blue')) {
+  if (options.get('hatColor', ['blue']).includes('blue')) {
     hatColor.push('Blue01', 'Blue02', 'Blue03');
   }
 
-  if (options.includes('hatColor', 'gray')) {
+  if (options.get('hatColor', ['gray']).includes('gray')) {
     hatColor.push('Gray01', 'Gray02');
   }
 
-  if (options.includes('hatColor', 'heather')) {
+  if (options.get('hatColor', ['heather']).includes('heather')) {
     hatColor.push('Heather');
   }
 
-  if (options.includes('hatColor', 'pastel')) {
+  if (options.get('hatColor', ['pastel']).includes('pastel')) {
     hatColor.push('PastelBlue', 'PastelGreen', 'PastelOrange', 'PastelRed', 'PastelYellow');
   }
 
-  if (options.includes('hatColor', 'pink')) {
+  if (options.get('hatColor', ['pink']).includes('pink')) {
     hatColor.push('Pink');
   }
 
-  if (options.includes('hatColor', 'red')) {
+  if (options.get('hatColor', ['red']).includes('red')) {
     hatColor.push('Red');
   }
 
-  if (options.includes('hatColor', 'white')) {
+  if (options.get('hatColor', ['white']).includes('white')) {
     hatColor.push('White');
   }
 

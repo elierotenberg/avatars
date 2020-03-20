@@ -1,25 +1,25 @@
-import Random from '@dicebear/avatars/lib/random';
+import type { Random, Options as OptionsContainer } from '@dicebear/avatars';
 // @ts-ignore
 import jdenticon from 'jdenticon';
 
-type Options = {
+type Options = OptionsContainer<{
   hues?: number[];
   colorLightness?: [number, number];
   grayscaleLightness?: [number, number];
   colorSaturation?: number;
   grayscaleSaturation?: number;
-};
+}>;
 
-export default function(random: Random, options: Options = {}) {
+export default function(random: Random, options: Options) {
   jdenticon.config = {
-    hues: options.hues,
+    hues: options.get('hues'),
     lightness: {
-      color: options.colorLightness,
-      grayscale: options.grayscaleLightness
+      color: options.get('colorLightness'),
+      grayscale: options.get('grayscaleLightness')
     },
     saturation: {
-      color: options.colorSaturation,
-      grayscale: options.grayscaleSaturation
+      color: options.get('colorSaturation'),
+      grayscale: options.get('grayscaleSaturation')
     }
   };
 

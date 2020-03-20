@@ -1,17 +1,17 @@
 import Random from './Random';
-import Options, { DefaultOptions } from './Options';
+import Options from './Options';
 import Parser from './Parser';
 
-export type SpriteCollection<O> = (random: Random, options?: Options<O>) => string | svgson.schema;
+export type SpriteCollection<T> = (random: Random, options?: Options<T>) => string | svgson.schema;
 
-export default class Avatars<O> {
-  protected spriteCollection: SpriteCollection<O>;
-  protected defaultOptions?: O & DefaultOptions;
+export default class Avatars<T> {
+  protected spriteCollection: SpriteCollection<T>;
+  protected defaultOptions?: T;
 
   /**
    * @param spriteCollection
    */
-  constructor(spriteCollection: SpriteCollection<O>, defaultOptions?: O & DefaultOptions) {
+  constructor(spriteCollection: SpriteCollection<T>, defaultOptions?: T) {
     this.spriteCollection = spriteCollection;
     this.defaultOptions = {
       userAgent: typeof window !== 'undefined' && window.navigator && window.navigator.userAgent,
@@ -24,8 +24,8 @@ export default class Avatars<O> {
    *
    * @param seed
    */
-  public create(seed: string, options?: O & DefaultOptions) {
-    const optionsContainer = new Options({ ...this.defaultOptions, ...options });
+  public create(seed: string, options?: T) {
+    const optionsContainer = new Options<T>(options, this.defaultOptions);
 
     let svg = Parser.parse(this.spriteCollection(new Random(seed), optionsContainer));
 
@@ -160,7 +160,7 @@ export default class Avatars<O> {
       );
     }
 
-    return optionsContainer.get('base64', false)
+    return optionsContainer.get('base64')
       ? `data:image/svg+xml;base64,${window.btoa(Parser.stringify(svg))}`
       : Parser.stringify(svg);
   }

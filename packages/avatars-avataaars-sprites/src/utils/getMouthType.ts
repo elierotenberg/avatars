@@ -4,51 +4,51 @@ import type Options from '../options';
 export default function(options: Options, random: Random) {
   let mouthType = [];
 
-  if (options.includes('mouth', 'concerned')) {
+  if (options.get('mouth', ['concerned']).includes('concerned')) {
     mouthType.push('Concerned');
   }
 
-  if (options.includes('mouth', 'default')) {
+  if (options.get('mouth', ['default']).includes('default')) {
     mouthType.push('Default');
   }
 
-  if (options.includes('mouth', 'disbelief')) {
+  if (options.get('mouth', ['disbelief']).includes('disbelief')) {
     mouthType.push('Disbelief');
   }
 
-  if (options.includes('mouth', 'eating')) {
+  if (options.get('mouth', ['eating']).includes('eating')) {
     mouthType.push('Eating');
   }
 
-  if (options.includes('mouth', 'grimace')) {
+  if (options.get('mouth', ['grimace']).includes('grimace')) {
     mouthType.push('Grimace');
   }
 
-  if (options.includes('mouth', 'sad')) {
+  if (options.get('mouth', ['sad']).includes('sad')) {
     mouthType.push('Sad');
   }
 
-  if (options.includes('mouth', 'scream')) {
+  if (options.get('mouth', ['scream']).includes('scream')) {
     mouthType.push('ScreamOpen');
   }
 
-  if (options.includes('mouth', 'serious')) {
+  if (options.get('mouth', ['serious']).includes('serious')) {
     mouthType.push('Serious');
   }
 
-  if (options.includes('mouth', 'smile')) {
+  if (options.get('mouth', ['smile']).includes('smile')) {
     mouthType.push('Smile');
   }
 
-  if (options.includes('mouth', 'tongue')) {
+  if (options.get('mouth', ['tongue']).includes('tongue')) {
     mouthType.push('Tongue');
   }
 
-  if (options.includes('mouth', 'twinkle')) {
+  if (options.get('mouth', ['twinkle']).includes('twinkle')) {
     mouthType.push('Twinkle');
   }
 
-  if (options.includes('mouth', 'vomit')) {
+  if (options.get('mouth', ['vomit']).includes('vomit')) {
     mouthType.push('Vomit');
   }
 

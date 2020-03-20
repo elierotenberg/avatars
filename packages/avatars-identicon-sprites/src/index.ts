@@ -12,7 +12,7 @@ export default function(random: Random, options: Options) {
 
   let colors = Object
     .values(colorCollection.get(colorLevel))
-    .filter(([name]) => options.includes('colors', name))
+    .filter(([name]) => options.get('colors', [name]).includes(name))
     .map(([, value]) => value);
 
   let color = random.pickone(colors);

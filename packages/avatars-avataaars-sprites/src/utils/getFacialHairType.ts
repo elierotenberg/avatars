@@ -4,23 +4,23 @@ import type Options from '../options';
 export default function(options: Options, random: Random) {
   let facialHairType = [];
 
-  if (options.includes('facialHair', 'medium')) {
+  if (options.get('facialHair', ['medium']).includes('medium')) {
     facialHairType.push('BeardMedium');
   }
 
-  if (options.includes('facialHair', 'light')) {
+  if (options.get('facialHair', ['light']).includes('light')) {
     facialHairType.push('BeardLight');
   }
 
-  if (options.includes('facialHair', 'majestic')) {
+  if (options.get('facialHair', ['majestic']).includes('majestic')) {
     facialHairType.push('BeardMajestic');
   }
 
-  if (options.includes('facialHair', 'fancy')) {
+  if (options.get('facialHair', ['fancy']).includes('fancy')) {
     facialHairType.push('MoustacheFancy');
   }
 
-  if (options.includes('facialHair', 'magnum')) {
+  if (options.get('facialHair', ['magnum']).includes('magnum')) {
     facialHairType.push('MoustacheMagnum');
   }
 

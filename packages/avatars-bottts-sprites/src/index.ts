@@ -26,7 +26,7 @@ export default function(random: Random, options: Options) {
   let possibleColors = Object
     .keys(primaryColors)
     .filter((name) => secondaryColors[name])
-    .filter((name) => options.includes('colors', name));
+    .filter((name) => options.get('colors', [name]).includes(name));
 
   let primaryColorName = random.pickone(possibleColors);
   let secondaryColorName = options.get('colorful', false) ? random.pickone(possibleColors) : primaryColorName;

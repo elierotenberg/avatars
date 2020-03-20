@@ -4,27 +4,27 @@ import type Options from '../options';
 export default function(options: Options, random: Random) {
   let accessoriesType = [];
 
-  if (options.includes('accessories', 'kurt')) {
+  if (options.get('accessories', ['kurt']).includes('kurt')) {
     accessoriesType.push('Kurt');
   }
 
-  if (options.includes('accessories', 'prescription01')) {
+  if (options.get('accessories', ['prescription01']).includes('prescription01')) {
     accessoriesType.push('Prescription01');
   }
 
-  if (options.includes('accessories', 'prescription02')) {
+  if (options.get('accessories', ['prescription02']).includes('prescription02')) {
     accessoriesType.push('Prescription02');
   }
 
-  if (options.includes('accessories', 'round')) {
+  if (options.get('accessories', ['round']).includes('round')) {
     accessoriesType.push('Round');
   }
 
-  if (options.includes('accessories', 'sunglasses')) {
+  if (options.get('accessories', ['sunglasses']).includes('sunglasses')) {
     accessoriesType.push('Sunglasses');
   }
 
-  if (options.includes('accessories', 'wayfarers')) {
+  if (options.get('accessories', ['wayfarers']).includes('wayfarers')) {
     accessoriesType.push('Wayfarers');
   }
 

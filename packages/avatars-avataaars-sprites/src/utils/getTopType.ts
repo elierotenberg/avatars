@@ -4,7 +4,7 @@ import type Options from '../options';
 export default function(options: Options, random: Random) {
   let topType = [];
 
-  if (options.includes('top', 'longHair')) {
+  if (options.get('top', ['longHair']).includes('longHair')) {
     topType.push(
       'LongHairBigHair',
       'LongHairBob',
@@ -24,7 +24,7 @@ export default function(options: Options, random: Random) {
     );
   }
 
-  if (options.includes('top', 'shortHair')) {
+  if (options.get('top', ['shortHair']).includes('shortHair')) {
     topType.push(
       'ShortHairDreads01',
       'ShortHairDreads02',
@@ -41,19 +41,19 @@ export default function(options: Options, random: Random) {
     );
   }
 
-  if (options.includes('top', 'eyepatch')) {
+  if (options.get('top', ['eyepatch']).includes('eyepatch')) {
     topType.push('Eyepatch');
   }
 
-  if (options.includes('top', 'hat')) {
+  if (options.get('top', ['hat']).includes('hat')) {
     topType.push('Hat', 'WinterHat1', 'WinterHat2', 'WinterHat3', 'WinterHat4');
   }
 
-  if (options.includes('top', 'hijab')) {
+  if (options.get('top', ['hijab']).includes('hijab')) {
     topType.push('Hijab');
   }
 
-  if (options.includes('top', 'turban')) {
+  if (options.get('top', ['turban']).includes('turban')) {
     topType.push('Turban');
   }
 

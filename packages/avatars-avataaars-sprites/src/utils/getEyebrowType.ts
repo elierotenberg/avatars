@@ -4,31 +4,31 @@ import type Options from '../options';
 export default function(options: Options, random: Random) {
   let eyebrowType = [];
 
-  if (options.includes('eyebrow', 'angry')) {
+  if (options.get('eyebrow', ['angry']).includes('angry')) {
     eyebrowType.push('Angry', 'AngryNatural');
   }
 
-  if (options.includes('eyebrow', 'default')) {
+  if (options.get('eyebrow', ['default']).includes('default')) {
     eyebrowType.push('Default', 'DefaultNatural');
   }
 
-  if (options.includes('eyebrow', 'flat')) {
+  if (options.get('eyebrow', ['flat']).includes('flat')) {
     eyebrowType.push('FlatNatural');
   }
 
-  if (options.includes('eyebrow', 'raised')) {
+  if (options.get('eyebrow', ['raised']).includes('raised')) {
     eyebrowType.push('RaisedExcited', 'RaisedExcitedNatural');
   }
 
-  if (options.includes('eyebrow', 'sad')) {
+  if (options.get('eyebrow', ['sad']).includes('sad')) {
     eyebrowType.push('SadConcerned', 'SadConcernedNatural');
   }
 
-  if (options.includes('eyebrow', 'unibrow')) {
+  if (options.get('eyebrow', ['unibrow']).includes('unibrow')) {
     eyebrowType.push('UnibrowNatural');
   }
 
-  if (options.includes('eyebrow', 'up')) {
+  if (options.get('eyebrow', ['up']).includes('up')) {
     eyebrowType.push('UpDown', 'UpDownNatural');
   }
 

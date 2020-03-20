@@ -8,16 +8,18 @@ export type DefaultOptions = {
   userAgent?: string;
 };
 
-export default class Options<T, O = T & DefaultOptions> {
-  private options: O;
-  private defaults: O;
+type Overwrite<T, U> = U & Pick<T, Exclude<keyof T, keyof U>>;
 
-  constructor(options: O, defaults?: O) {
+export default class Options<T = {}, O = DefaultOptions & T> {
+  private options: O;
+  private defaults: Partial<O>;
+
+  constructor(options: O, defaults: Partial<O> = {}) {
     this.options = options;
     this.defaults = defaults;
   }
 
-  setDefaults(defaults: O) {
+  setDefaults(defaults: Partial<O>) {
     this.defaults = defaults;
 
     return this;
@@ -27,31 +29,15 @@ export default class Options<T, O = T & DefaultOptions> {
     return this.options[key] !== undefined;
   }
 
-  get<K extends keyof O>(key: K, defaultValue: any = this.defaults && this.defaults[key]): O[K] | any {
-    if (false === this.has(key)) {
-      return defaultValue;
-    }
-
-    return this.options[key];
+  get<K extends keyof O>(key: K, defaultValue = this.defaults[key]): O[K] {
+    return this.options[key] || defaultValue;
   }
 
-  set<K extends keyof O>(key: K, value: any): O[K] {
+  set<K extends keyof O>(key: K, value: O[K]): O[K] {
     return (this.options[key] = value);
   }
 
   delete<K extends keyof O>(key: K): boolean {
     return delete this.options[key];
-  }
-
-  includes<K extends keyof O>(key: K, searchElement: any, fallback = true) {
-    if (this.has(key)) {
-      const value = this.get(key);
-
-      if (Array.isArray(value)) {
-        return value.includes(searchElement);
-      }
-    }
-
-    return fallback;
   }
 }
