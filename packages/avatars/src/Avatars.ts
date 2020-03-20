@@ -1,17 +1,17 @@
 import Random from './Random';
-import Options from './Options';
+import Options, { DefaultOptions } from './Options';
 import Parser from './Parser';
 
 export type SpriteCollection<T> = (random: Random, options?: Options<T>) => string | svgson.schema;
 
-export default class Avatars<T> {
+export default class Avatars<T, O = DefaultOptions & T> {
   protected spriteCollection: SpriteCollection<T>;
-  protected defaultOptions?: T;
+  protected defaultOptions?: O;
 
   /**
    * @param spriteCollection
    */
-  constructor(spriteCollection: SpriteCollection<T>, defaultOptions?: T) {
+  constructor(spriteCollection: SpriteCollection<T>, defaultOptions?: O) {
     this.spriteCollection = spriteCollection;
     this.defaultOptions = {
       userAgent: typeof window !== 'undefined' && window.navigator && window.navigator.userAgent,

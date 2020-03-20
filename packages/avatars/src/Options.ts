@@ -8,8 +8,6 @@ export type DefaultOptions = {
   userAgent?: string;
 };
 
-type Overwrite<T, U> = U & Pick<T, Exclude<keyof T, keyof U>>;
-
 export default class Options<T = {}, O = DefaultOptions & T> {
   private options: O;
   private defaults: Partial<O>;
