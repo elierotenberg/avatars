@@ -26,7 +26,7 @@ export default function(options: Options, random: Random) {
 
   let pickedFacialHairType = random.pickone(facialHairType);
 
-  if (false === random.bool(options.get('facialHairChance', 10))) {
+  if (false === random.bool(options.get('facialHairChance'))) {
     return 'Blank';
   }
 

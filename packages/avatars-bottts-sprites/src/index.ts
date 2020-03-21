@@ -18,9 +18,20 @@ const group = (random: Random, content: string, chance: number, x: number, y: nu
 };
 
 export default function(random: Random, options: Options) {
+  options.setDefaults({
+    colors: [],
+    primaryColorLevel: 600,
+    secondaryColorLevel: 400,
+    colorful: false,
+    mouthChance: 100,
+    sidesChance: 100,
+    textureChance: 50,
+    topChange: 100
+  }, false);
+
   let colorCollection = new ColorCollection();
-  let primaryColors = colorCollection.get(options.get('primaryColorLevel', 600));
-  let secondaryColors = colorCollection.get(options.get('secondaryColorLevel', 400));
+  let primaryColors = colorCollection.get(options.get('primaryColorLevel'));
+  let secondaryColors = colorCollection.get(options.get('secondaryColorLevel'));
 
   // Select colors that occur in both color levels.
   let possibleColors = Object
@@ -29,7 +40,7 @@ export default function(random: Random, options: Options) {
     .filter((name) => options.get('colors', [name]).includes(name));
 
   let primaryColorName = random.pickone(possibleColors);
-  let secondaryColorName = options.get('colorful', false) ? random.pickone(possibleColors) : primaryColorName;
+  let secondaryColorName = options.get('colorful') ? random.pickone(possibleColors) : primaryColorName;
 
   let primaryColor = primaryColors[primaryColorName];
   let secondaryColor = secondaryColors[secondaryColorName];
@@ -44,10 +55,10 @@ export default function(random: Random, options: Options) {
   // prettier-ignore
   return [
     '<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" fill="none">',
-    group(random, sides(primaryColor), options.get('sidesChance', 100), 0, 66),
-    group(random, top(primaryColor), options.get('topChange', 100), 41, 0),
-    group(random, face(secondaryColor, random.bool(options.get('textureChance', 50)) ? texture() : undefined), 100, 25, 44),
-    group(random, mouth(), options.get('mouthChance', 100), 52, 124),
+    group(random, sides(primaryColor), options.get('sidesChance'), 0, 66),
+    group(random, top(primaryColor), options.get('topChange'), 41, 0),
+    group(random, face(secondaryColor, random.bool(options.get('textureChance')) ? texture() : undefined), 100, 25, 44),
+    group(random, mouth(), options.get('mouthChance'), 52, 124),
     group(random, eyes(), 100, 38, 76),
     '</svg>'
   ].join('');

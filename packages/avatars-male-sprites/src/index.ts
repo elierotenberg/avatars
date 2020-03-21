@@ -7,6 +7,10 @@ type Options = OptionsContainer<{
 }>;
 
 export default function(random: Random, options: Options) {
+  options.setDefaults({
+    mood: []
+  }, false);
+
   let skinColor = random.pickone([
     new Color('#FFDBAC'),
     new Color('#F5CFA0'),

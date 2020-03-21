@@ -17,8 +17,8 @@ export default class Options<T = {}, O = DefaultOptions & T> {
     this.defaults = defaults;
   }
 
-  setDefaults(defaults: Partial<O>) {
-    this.defaults = defaults;
+  setDefaults(defaults: Partial<O>, override = true) {
+    this.defaults = override ? { ...this.defaults, ...defaults } : { ...defaults, ...this.defaults };
 
     return this;
   }

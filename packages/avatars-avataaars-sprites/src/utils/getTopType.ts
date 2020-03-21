@@ -59,7 +59,7 @@ export default function(options: Options, random: Random) {
 
   let pickedTopType = random.pickone(topType);
 
-  if (false === random.bool(options.get('topChance', 100))) {
+  if (false === random.bool(options.get('topChance'))) {
     return 'NoHair';
   }
 

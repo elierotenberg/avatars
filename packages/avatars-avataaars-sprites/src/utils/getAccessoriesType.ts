@@ -30,7 +30,7 @@ export default function(options: Options, random: Random) {
 
   let pickedAccessoriesType = random.pickone(accessoriesType);
 
-  if (false === random.bool(options.get('accessoriesChance', 10))) {
+  if (false === random.bool(options.get('accessoriesChance'))) {
     return 'Blank';
   }
 

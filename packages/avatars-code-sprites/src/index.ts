@@ -9,6 +9,12 @@ type Options = OptionsContainer<{
 >;
 
 export default function(random: Random, options: Options) {
+  options.setDefaults({
+    type: 'qr',
+    color: '#000',
+    correctionLevel: 'M'
+  }, false);
+
   let svg = qrImage
     .imageSync(random.seed, {
       type: 'svg',

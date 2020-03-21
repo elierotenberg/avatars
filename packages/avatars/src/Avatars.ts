@@ -14,7 +14,13 @@ export default class Avatars<T, O = DefaultOptions & T> {
   constructor(spriteCollection: SpriteCollection<T>, defaultOptions?: O) {
     this.spriteCollection = spriteCollection;
     this.defaultOptions = {
-      userAgent: typeof window !== 'undefined' && window.navigator && window.navigator.userAgent,
+      radius: 0,
+      base64: false,
+      width: undefined,
+      height: undefined,
+      margin: 0,
+      background: undefined,
+      userAgent: typeof window !== 'undefined' && window.navigator?.userAgent,
       ...defaultOptions
     };
   }
@@ -25,7 +31,7 @@ export default class Avatars<T, O = DefaultOptions & T> {
    * @param seed
    */
   public create(seed: string, options?: T) {
-    const optionsContainer = new Options<T>(options, this.defaultOptions);
+    const optionsContainer = new Options<T>({ ...options }, this.defaultOptions);
 
     let svg = Parser.parse(this.spriteCollection(new Random(seed), optionsContainer));
 

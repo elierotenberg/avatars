@@ -11,6 +11,14 @@ type Options = OptionsContainer<{
 }>;
 
 export default function(random: Random, options: Options) {
+  options.setDefaults({
+    hues: [],
+    colorLightness: undefined,
+    grayscaleLightness: undefined,
+    colorSaturation: undefined,
+    grayscaleSaturation: undefined
+  }, false);
+
   jdenticon.config = {
     hues: options.get('hues'),
     lightness: {

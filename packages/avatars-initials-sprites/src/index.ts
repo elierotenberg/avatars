@@ -15,10 +15,12 @@ type Options = OptionsContainer<{
 
 export default function(random: Random, options: Options) {
   options.setDefaults({
+    backgroundColors: [],
     backgroundColorLevel: 600,
     fontSize: 50,
-    chars: 2
-  });
+    chars: 2,
+    bold: false
+  }, false);
 
   let userAgent = options.get('userAgent');
   let isInternetExplorer = userAgent && Bowser.getParser(userAgent).satisfies({

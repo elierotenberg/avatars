@@ -62,7 +62,7 @@ let svg = avatars.create('custom-seed');
 | background      | string | `null`                       | Any valid color identifier<br> **HTTP-API limitation** Only hex _(3-digit, 6-digit and 8-digit)_ values are allowed. Use url encoded hash: `%23`. |
 | userAgent       | string | `window.navigator.userAgent` | User-Agent for legacy browser fallback<br> **Automatically detected by the HTTP API**                                                             |
 | type            | string | `qr`                         | Currently only "qr" is supported                                                                                                                  |
-| color           | string | `null`                       | Any valid color identifier<br> **HTTP-API limitation** Only hex _(3-digit, 6-digit and 8-digit)_ values are allowed. Use url encoded hash: `%23`. |
+| color           | string | `#000`                       | Any valid color identifier<br> **HTTP-API limitation** Only hex _(3-digit, 6-digit and 8-digit)_ values are allowed. Use url encoded hash: `%23`. |
 | correctionLevel | string | `M`                          | Choose from `L`, `M`, `Q`, `H`                                                                                                                    |
 
 ## Further information
