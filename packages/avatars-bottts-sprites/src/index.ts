@@ -17,25 +17,27 @@ const group = (random: Random, content: string, chance: number, x: number, y: nu
   return '';
 };
 
-export default function(random: Random, options: Options) {
-  options.setDefaults({
-    colors: [],
-    primaryColorLevel: 600,
-    secondaryColorLevel: 400,
-    colorful: false,
-    mouthChance: 100,
-    sidesChance: 100,
-    textureChance: 50,
-    topChange: 100
-  }, false);
+export default function (random: Random, options: Options) {
+  options.setDefaults(
+    {
+      colors: [],
+      primaryColorLevel: 600,
+      secondaryColorLevel: 400,
+      colorful: false,
+      mouthChance: 100,
+      sidesChance: 100,
+      textureChance: 50,
+      topChange: 100,
+    },
+    false
+  );
 
   let colorCollection = new ColorCollection();
   let primaryColors = colorCollection.get(options.get('primaryColorLevel'));
   let secondaryColors = colorCollection.get(options.get('secondaryColorLevel'));
 
   // Select colors that occur in both color levels.
-  let possibleColors = Object
-    .keys(primaryColors)
+  let possibleColors = Object.keys(primaryColors)
     .filter((name) => secondaryColors[name])
     .filter((name) => options.get('colors', [name]).includes(name));
 

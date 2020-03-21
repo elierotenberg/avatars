@@ -13,32 +13,38 @@ type Options = OptionsContainer<{
   bold?: boolean;
 }>;
 
-export default function(random: Random, options: Options) {
-  options.setDefaults({
-    backgroundColors: [],
-    backgroundColorLevel: 600,
-    fontSize: 50,
-    chars: 2,
-    bold: false
-  }, false);
+export default function (random: Random, options: Options) {
+  options.setDefaults(
+    {
+      backgroundColors: [],
+      backgroundColorLevel: 600,
+      fontSize: 50,
+      chars: 2,
+      bold: false,
+    },
+    false
+  );
 
   let userAgent = options.get('userAgent');
-  let isInternetExplorer = userAgent && Bowser.getParser(userAgent).satisfies({
+  let isInternetExplorer =
+    userAgent &&
+    Bowser.getParser(userAgent).satisfies({
       ie: '>0',
-      edge: '<=18'
+      edge: '<=18',
     });
-  let isSafari = userAgent && Bowser.getParser(userAgent).satisfies({
-      safari: '>0'
+  let isSafari =
+    userAgent &&
+    Bowser.getParser(userAgent).satisfies({
+      safari: '>0',
     });
 
   if (false === options.has('background')) {
     let colorCollection = new ColorCollection();
     let backgroundColorLevel = options.get('backgroundColorLevel');
 
-    let backgroundColors = Object
-      .values(colorCollection.get(backgroundColorLevel))
+    let backgroundColors = Object.values(colorCollection.get(backgroundColorLevel))
       .filter(([name]) => options.get('backgroundColors', [name]).includes(name))
-      .map(([,value]) => value);
+      .map(([, value]) => value);
 
     options.set('background', random.pickone(backgroundColors));
   }

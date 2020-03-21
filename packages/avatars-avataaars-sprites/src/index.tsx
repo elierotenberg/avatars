@@ -17,25 +17,28 @@ import getEyebrowType from './utils/getEyebrowType';
 import getMouthType from './utils/getMouthType';
 import getSkinColor from './utils/getSkinColor';
 
-export default function(random: Random, options: Options) {
-  options.setDefaults({
-    style: 'transparent',
-    top: [],
-    topChance: 100,
-    hatColor: [],
-    hairColor: [],
-    accessories: [],
-    accessoriesChance: 10,
-    facialHair: [],
-    facialHairChance: 10,
-    facialHairColor: [],
-    clothes: [],
-    clothesColor: [],
-    eyes: [],
-    eyebrow: [],
-    mouth: [],
-    skin: []
-  }, false);
+export default function (random: Random, options: Options) {
+  options.setDefaults(
+    {
+      style: 'transparent',
+      top: [],
+      topChance: 100,
+      hatColor: [],
+      hairColor: [],
+      accessories: [],
+      accessoriesChance: 10,
+      facialHair: [],
+      facialHairChance: 10,
+      facialHairColor: [],
+      clothes: [],
+      clothesColor: [],
+      eyes: [],
+      eyebrow: [],
+      mouth: [],
+      skin: [],
+    },
+    false
+  );
 
   let jsx = (
     <Avatar

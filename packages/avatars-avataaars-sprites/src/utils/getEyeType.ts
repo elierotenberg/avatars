@@ -1,7 +1,7 @@
 import type { Random } from '@dicebear/avatars';
 import type Options from '../options';
 
-export default function(options: Options, random: Random) {
+export default function (options: Options, random: Random) {
   let eyeType = [];
 
   if (options.get('eyes', ['close']).includes('close')) {

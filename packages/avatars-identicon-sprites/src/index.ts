@@ -6,17 +6,19 @@ type Options = OptionsContainer<{
   colorLevel?: number;
 }>;
 
-export default function(random: Random, options: Options) {
-  options.setDefaults({
-    colors: [],
-    colorLevel: 600
-  }, false);
+export default function (random: Random, options: Options) {
+  options.setDefaults(
+    {
+      colors: [],
+      colorLevel: 600,
+    },
+    false
+  );
 
   let colorCollection = new ColorCollection();
   let colorLevel = options.get('colorLevel');
 
-  let colors = Object
-    .values(colorCollection.get(colorLevel))
+  let colors = Object.values(colorCollection.get(colorLevel))
     .filter(([name]) => options.get('colors', [name]).includes(name))
     .map(([, value]) => value);
 

@@ -6,10 +6,13 @@ type Options = OptionsContainer<{
   colorful?: boolean;
 }>;
 
-export default function(random: Random, options: Options) {
-  options.setDefaults({
-    colorful: false
-  }, false);
+export default function (random: Random, options: Options) {
+  options.setDefaults(
+    {
+      colorful: false,
+    },
+    false
+  );
 
   let body = random.integer(0, 7);
   let bodyColor = random.integer(0, 7);
@@ -23,6 +26,6 @@ export default function(random: Random, options: Options) {
   return [
     '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 24 24" version="1.1">',
     inner(`${body}${bodyColor}${eyes}${eyesColor}${mouth}${mouthColor}`),
-    '</svg>'
+    '</svg>',
   ].join('');
 }

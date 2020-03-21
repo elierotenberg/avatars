@@ -1,7 +1,7 @@
 import type { Random } from '@dicebear/avatars';
 import type Options from '../options';
 
-export default function(options: Options, random: Random) {
+export default function (options: Options, random: Random) {
   let facialHairColor = [];
 
   if (options.get('facialHairColor', ['auburn']).includes('auburn')) {

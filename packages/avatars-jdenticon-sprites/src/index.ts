@@ -10,29 +10,29 @@ type Options = OptionsContainer<{
   grayscaleSaturation?: number;
 }>;
 
-export default function(random: Random, options: Options) {
-  options.setDefaults({
-    hues: [],
-    colorLightness: undefined,
-    grayscaleLightness: undefined,
-    colorSaturation: undefined,
-    grayscaleSaturation: undefined
-  }, false);
+export default function (random: Random, options: Options) {
+  options.setDefaults(
+    {
+      hues: [],
+      colorLightness: undefined,
+      grayscaleLightness: undefined,
+      colorSaturation: undefined,
+      grayscaleSaturation: undefined,
+    },
+    false
+  );
 
   jdenticon.config = {
     hues: options.get('hues'),
     lightness: {
       color: options.get('colorLightness'),
-      grayscale: options.get('grayscaleLightness')
+      grayscale: options.get('grayscaleLightness'),
     },
     saturation: {
       color: options.get('colorSaturation'),
-      grayscale: options.get('grayscaleSaturation')
-    }
+      grayscale: options.get('grayscaleSaturation'),
+    },
   };
 
-  return jdenticon
-    .toSvg(random.seed, 50, 0)
-    .replace('width="50"', '')
-    .replace('height="50"', '');
+  return jdenticon.toSvg(random.seed, 50, 0).replace('width="50"', '').replace('height="50"', '');
 }
