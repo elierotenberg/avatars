@@ -167,11 +167,20 @@ export default class Avatars<T, O = DefaultOptions & T> {
     }
 
     return optionsContainer.get('base64')
-      ? `data:image/svg+xml;base64,${window.btoa(Parser.stringify(svg))}`
+      ? `data:image/svg+xml;base64,${this.base64EncodeUnicode(Parser.stringify(svg))}`
       : Parser.stringify(svg);
   }
 
   private isGroupable(element: svgson.schema) {
     return element.type === 'element' && ['title', 'desc', 'defs', 'metadata'].indexOf(element.name) === -1;
+  }
+
+  private base64EncodeUnicode(value: string) {
+    // @see https://www.base64encoder.io/javascript/
+    let utf8Bytes = encodeURIComponent(value).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+      return String.fromCharCode(parseInt(`0x${p1}`));
+    });
+
+    return btoa(utf8Bytes);
   }
 }
