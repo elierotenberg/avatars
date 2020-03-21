@@ -2,25 +2,32 @@ import { Color } from '@dicebear/avatars';
 import type { Random, Options as OptionsContainer } from '@dicebear/avatars';
 
 type Options = OptionsContainer<{
-  skinColors?: Array<100 | 200 | 300 | 400 | 500 | 600 | 700 | 800>;
+  skinColors?: number[];
   mood?: Array<'happy' | 'sad' | 'surprised'>;
 }>;
 
 export default function(random: Random, options: Options) {
   options.setDefaults({
+    skinColors: [],
     mood: []
   }, false);
 
-  let skinColor = random.pickone([
-    new Color('#FFDBAC'),
-    new Color('#F5CFA0'),
-    new Color('#EAC393'),
-    new Color('#E0B687'),
-    new Color('#CB9E6E'),
-    new Color('#B68655'),
-    new Color('#A26D3D'),
-    new Color('#8D5524')
-  ]);
+  let skinColor = random.pickone(
+    Object
+      .entries({
+        100: '#FFDBAC',
+        200: '#F1CA9B',
+        300: '#E3BA8A',
+        400: '#D4A979',
+        500: '#C69868',
+        600: '#B88757',
+        700: '#AA7746',
+        800: '#9B6635',
+        900: '#8D5524'
+      })
+      .filter(([name]) => options.get('skinColors', [parseInt(name)]).includes(parseInt(name)))
+      .map(([,value]) => value)
+  );
 
   let hairColor = random
     .pickone([

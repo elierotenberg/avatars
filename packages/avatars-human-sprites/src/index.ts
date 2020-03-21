@@ -3,6 +3,7 @@ import Female from '@dicebear/avatars-female-sprites';
 import type { Random, Options as OptionsContainer } from '@dicebear/avatars';
 
 type Options = OptionsContainer<{
+  skinColors?: number[];
   mood?: Array<'happy' | 'sad' | 'surprised'>;
 }>;
 

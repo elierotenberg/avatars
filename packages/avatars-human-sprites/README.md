@@ -64,6 +64,7 @@ let svg = avatars.create('custom-seed');
 | margin     | number           | `0`                             | Avatar margin in percent<br> **HTTP-API limitation** Max value `25`                                                                               |
 | background | string           | `null`                          | Any valid color identifier<br> **HTTP-API limitation** Only hex _(3-digit, 6-digit and 8-digit)_ values are allowed. Use url encoded hash: `%23`. |
 | userAgent  | string           | `window.navigator.userAgent`    | User-Agent for legacy browser fallback<br> **Automatically detected by the HTTP API**                                                             |
+| skinColor  | array of numbers | `null`                          | Possible values: `100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900`                                                                    |
 | mood       | array of strings | `['happy', 'sad', 'surprised']` | Possible values: `sad`, `happy`, `surprised`                                                                                                      |
 
 ## Further information
