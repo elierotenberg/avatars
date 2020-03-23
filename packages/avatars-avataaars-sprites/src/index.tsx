@@ -1,74 +1,55 @@
-import * as React from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
 import type { Random } from '@dicebear/avatars';
-import Avatar from 'avataaars';
 import Options from './options';
-import getAvatarStyle from './utils/getAvatarStyle';
-import getTopType from './utils/getTopType';
-import getAccessoriesType from './utils/getAccessoriesType';
-import getHatColor from './utils/getHatColor';
-import getHairColor from './utils/getHairColor';
-import getFacialHairType from './utils/getFacialHairType';
-import getFacialHairColor from './utils/getFacialHairColor';
-import getClotheType from './utils/getClotheType';
-import getClotheColor from './utils/getClotheColor';
-import getEyeType from './utils/getEyeType';
-import getEyebrowType from './utils/getEyebrowType';
-import getMouthType from './utils/getMouthType';
-import getSkinColor from './utils/getSkinColor';
+import getMaskId from './utils/getMaskId';
 
 export default function (random: Random, options: Options) {
-  options.setDefaults(
-    {
-      style: 'transparent',
-      top: [],
-      topChance: 100,
-      hatColor: [],
-      hairColor: [],
-      accessories: [],
-      accessoriesChance: 10,
-      facialHair: [],
-      facialHairChance: 10,
-      facialHairColor: [],
-      clothes: [],
-      clothesColor: [],
-      eyes: [],
-      eyebrow: [],
-      mouth: [],
-      skin: [],
-    },
-    false
-  );
+    options.setDefaults(
+        {
+            style: 'transparent',
+            top: [],
+            topChance: 100,
+            hatColor: [],
+            hairColor: [],
+            accessories: [],
+            accessoriesChance: 10,
+            facialHair: [],
+            facialHairChance: 10,
+            facialHairColor: [],
+            clothes: [],
+            clothesColor: [],
+            eyes: [],
+            eyebrow: [],
+            mouth: [],
+            skin: [],
+        },
+        false
+    );
 
-  let jsx = (
-    <Avatar
-      avatarStyle={getAvatarStyle(options)}
-      topType={getTopType(options, random)}
-      accessoriesType={getAccessoriesType(options, random)}
-      // @ts-ignore
-      hatColor={getHatColor(options, random)}
-      hairColor={getHairColor(options, random)}
-      facialHairType={getFacialHairType(options, random)}
-      facialHairColor={getFacialHairColor(options, random)}
-      clotheType={getClotheType(options, random)}
-      clotheColor={getClotheColor(options, random)}
-      eyeType={getEyeType(options, random)}
-      eyebrowType={getEyebrowType(options, random)}
-      mouthType={getMouthType(options, random)}
-      skinColor={getSkinColor(options, random)}
-    />
-  );
+    let svg = `
+        
+    `;
 
-  let rendered = renderToStaticMarkup(jsx);
+    if (options.get('style') === 'circle') {
+        svg = `
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M132 280C198.274 280 252 226.274 252 160C252 93.7258 198.274 40 132 40C65.7258 40 12 93.7258 12 160C12 226.274 65.7258 280 132 280Z" fill="#E6E6E6"/>
+            <mask id="${getMaskId()}" mask-type="alpha" maskUnits="userSpaceOnUse" x="12" y="40" width="240" height="240">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M132 280C198.274 280 252 226.274 252 160C252 93.7258 198.274 40 132 40C65.7258 40 12 93.7258 12 160C12 226.274 65.7258 280 132 280Z" fill="white"/>
+            </mask>
+            <g mask="url(#${getMaskId(false)})">
+                <rect x="12" y="40" width="240" height="240" fill="#65C9FF"/>
+            </g>
+            <mask id="${getMaskId()}" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="264" height="280">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M264 0H0V160H12C12 226.274 65.7258 280 132 280C198.274 280 252 226.274 252 160H264V0Z" fill="white"/>
+            </mask>
+            <g mask="url(#${getMaskId(false)})">
+                ${svg}
+            </g>
+        `;
+    }
 
-  if (options.get('background') && options.get('style') === 'circle') {
-    rendered.replace('mask="url(#mask-2)" fill="#65C9FF"', `mask="url(#mask-2)" fill="${options.get('background')}"`);
-
-    options.delete('background');
-  }
-
-  return rendered
-    .replace('width="264px"', '')
-    .replace('height="280px"', '')
-    .replace('viewBox="0 0 264 280"', 'viewBox="-8 0 280 280"');
+    return `
+        <svg viewBox="-8 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+            ${svg}
+        </svg>
+    `;
 }
