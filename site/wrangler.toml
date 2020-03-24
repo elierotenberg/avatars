@@ -1,0 +1,10 @@
+name = "site"
+type = "webpack"
+account_id = "e2ee4044ba2a9a0adf57c87ffa288d67"
+workers_dev = false
+route = "avatars.dicebear.com/site/*"
+zone_id = "0890941443eff5660bbfa02c9af3c8d1"
+
+[site]
+bucket = "./dist"
+entry-point = "workers-site"
