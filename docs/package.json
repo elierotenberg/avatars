@@ -1,0 +1,13 @@
+{
+  "name": "docs",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "vuepress": "^1.4.0",
+    "@cloudflare/kv-asset-handler": "^0.0.5"
+  },
+  "scripts": {
+    "dev": "vuepress dev .",
+    "build": "vuepress build ."
+  }
+}

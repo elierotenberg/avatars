@@ -1,6 +1,9 @@
-name = "api"
+name = "site"
 type = "webpack"
 account_id = "e2ee4044ba2a9a0adf57c87ffa288d67"
-workers_dev = true
-route = "avatars.dicebear.com/api/*"
 zone_id = "0890941443eff5660bbfa02c9af3c8d1"
+workers_dev = true
+
+[site]
+bucket = "./docs/.vuepress/dist"
+entry-point = "docs"
