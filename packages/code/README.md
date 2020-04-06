@@ -1,7 +1,7 @@
-![DiceBear Avatars - Code Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/avatars-code-sprites/banner.svg?sanitize=true)
+![DiceBear Avatars - Code Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/code/banner.svg?sanitize=true)
 
 ![license](https://img.shields.io/npm/l/@avatars/code.svg?style=flat-square)
-[![npm](https://img.shields.io/npm/v/@avatars/code-sprites.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-code)
+[![npm](https://img.shields.io/npm/v/@avatars/code.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-code)
 
 <p>
     <img src="https://avatars.dicebear.com/api/code/1.svg" width="60" />

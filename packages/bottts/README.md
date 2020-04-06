@@ -1,7 +1,7 @@
-![DiceBear Avatars - Bottts Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/avatars-bottts-sprites/banner.svg?sanitize=true)
+![DiceBear Avatars - Bottts Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/bottts/banner.svg?sanitize=true)
 
 ![license](https://img.shields.io/npm/l/@avatars/bottts.svg?style=flat-square)
-[![npm](https://img.shields.io/npm/v/@avatars/bottts-sprites.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-bottts)
+[![npm](https://img.shields.io/npm/v/@avatars/bottts.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-bottts)
 
 Designed by [Pablo Stanley](https://twitter.com/pablostanley), the Sketch library can be found on
 [bottts.com](https://bottts.com/).

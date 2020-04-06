@@ -1,9 +1,9 @@
-![DiceBear Avatars - Human Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/avatars-human-sprites/banner.svg?sanitize=true)
+![DiceBear Avatars - Human Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/human/banner.svg?sanitize=true)
 
 ![license](https://img.shields.io/npm/l/@avatars/human.svg?style=flat-square)
-[![npm](https://img.shields.io/npm/v/@avatars/human-sprites.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-human)
+[![npm](https://img.shields.io/npm/v/@avatars/human.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-human)
 
-This Sprite Collection combines the Sprite Collections [male](https://www.npmjs.com/package/@avatars/male-sprites) and [female](https://www.npmjs.com/package/@dicebear/avatars-female) and selects the gender randomly.
+This Sprite Collection combines the Sprite Collections [male](https://www.npmjs.com/package/@avatars/male) and [female](https://www.npmjs.com/package/@dicebear/avatars-female) and selects the gender randomly.
 
 <p>
     <img src="https://avatars.dicebear.com/api/human/1.svg" width="60" />

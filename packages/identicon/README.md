@@ -1,7 +1,7 @@
-![DiceBear Avatars - Identicon Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/avatars-identicon-sprites/banner.svg?sanitize=true)
+![DiceBear Avatars - Identicon Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/identicon/banner.svg?sanitize=true)
 
 ![license](https://img.shields.io/npm/l/@avatars/identicon.svg?style=flat-square)
-[![npm](https://img.shields.io/npm/v/@avatars/identicon-sprites.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-identicon)
+[![npm](https://img.shields.io/npm/v/@avatars/identicon.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-identicon)
 
 <p>
     <img src="https://avatars.dicebear.com/api/identicon/1.svg" width="60" />

@@ -1,7 +1,7 @@
-![DiceBear Avatars - Male Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/avatars-male-sprites/banner.svg?sanitize=true)
+![DiceBear Avatars - Male Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/male/banner.svg?sanitize=true)
 
 ![license](https://img.shields.io/npm/l/@avatars/male.svg?style=flat-square)
-[![npm](https://img.shields.io/npm/v/@avatars/male-sprites.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-male)
+[![npm](https://img.shields.io/npm/v/@avatars/male.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-male)
 
 <p>
     <img src="https://avatars.dicebear.com/api/male/1.svg" width="60" />

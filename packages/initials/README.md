@@ -1,7 +1,7 @@
-![DiceBear Avatars - Initials Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/avatars-initials-sprites/banner.svg?sanitize=true)
+![DiceBear Avatars - Initials Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/initials/banner.svg?sanitize=true)
 
 ![license](https://img.shields.io/npm/l/@avatars/initials.svg?style=flat-square)
-[![npm](https://img.shields.io/npm/v/@avatars/initials-sprites.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-initials)
+[![npm](https://img.shields.io/npm/v/@avatars/initials.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-initials)
 
 <p>
     <img src="https://avatars.dicebear.com/api/initials/John%20Doe.svg" width="60" />

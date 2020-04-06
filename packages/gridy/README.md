@@ -1,7 +1,7 @@
-![DiceBear Avatars - Gridy Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/avatars-gridy-sprites/banner.svg?sanitize=true)
+![DiceBear Avatars - Gridy Sprite Collection](https://raw.githubusercontent.com/DiceBear/avatars/master/packages/gridy/banner.svg?sanitize=true)
 
 ![license](https://img.shields.io/npm/l/@avatars/gridy.svg?style=flat-square)
-[![npm](https://img.shields.io/npm/v/@avatars/gridy-sprites.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-gridy)
+[![npm](https://img.shields.io/npm/v/@avatars/gridy.svg?style=flat-square)](https://www.npmjs.com/package/@dicebear/avatars-gridy)
 
 Designed by [Jan Forst](https://github.com/darosh/gridy-avatars).
 
