@@ -1,6 +1,3 @@
 node_modules
 yarn.lock
 package-lock.json
-docs/worker
-docs/.vuepress/dist
-dist
