@@ -16,6 +16,9 @@ export type Options = {
   m?: number;
   background?: string;
   b?: number;
+  svgAttributes?: {
+    [k: string]: string | ((value?: string) => string);
+  };
   /** @deprecated */
   userAgent?: string;
 };
@@ -192,6 +195,15 @@ export default class Avatars<O> {
             },
           }
         );
+      }
+      if (options.svgAttributes) {
+        for (const [key, value] of Object.entries(options.svgAttributes)) {
+          if (typeof value === 'string') {
+            svg.attributes[key] = value;
+          } else {
+            svg.attributes[key] = value(svg.attributes[key]);
+          }
+        }
       }
     }
 
